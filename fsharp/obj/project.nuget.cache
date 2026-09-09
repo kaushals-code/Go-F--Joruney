@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "5eN4vzjlGUs=",
+  "success": true,
+  "projectFilePath": "/home/the-weeknd/Desk/go-fsharp-journey/fsharp/fsharp.fsproj",
+  "expectedPackageFiles": [
+    "/home/the-weeknd/.nuget/packages/fsharp.core/8.0.403/fsharp.core.8.0.403.nupkg.sha512"
+  ],
+  "logs": []
+}
