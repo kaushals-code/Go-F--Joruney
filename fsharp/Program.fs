@@ -187,10 +187,77 @@
 
 // printfn "%d" res
 
-let add a = 
-    fun y -> a + y
+// let add a = 
+//     fun y -> a + y
 
-let applyOp func a b = 
-    func a b
+// let applyOp func a b = 
+//     func a b
 
-printfn "%d" (applyOp 3 4)
+// printfn "%d" (applyOp 3 4)
+
+
+// prime number checker function
+// let isPrime n = 
+//     if n < 2 then
+//         false 
+//     else
+//         let rec check div = 
+//             if div * div > n then
+//                 true
+//             elif n % div = 0 then
+//                 false
+//             else 
+//                 check (n + 1)
+//         check 2
+    
+
+// let number = 80 
+
+// if isPrime number then
+//     printfn "The number is prime"
+// else 
+//     printfn "The number is NOT a prime"
+
+
+// multiplication table generator
+// let multiplicatointable n = 
+//     for i = 1 to 10 do
+//         printf "%d x %d = %d\n" n i (n * i)
+
+// let number = 8
+
+// multiplicatointable number
+
+
+
+// factorial
+
+// let mutable ans = 1
+// let multiply num = 
+//     ans <- ans * num
+
+// let factorial n = 
+//     for i = 1 to n do 
+//         multiply i
+//     ans
+
+// printfn "%d" (factorial 9)
+
+
+
+// fibonacci
+
+// let mutable a = 1
+// let mutable b = 1 
+
+// printfn "1 \n1 "
+
+// let fibo n = 
+//     for i = 1 to (n - 1) do 
+//         let tot = a + b
+//         printfn "%d " tot
+
+//         a <- b
+//         b <- tot
+
+// fibo 10
