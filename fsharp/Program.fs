@@ -108,15 +108,89 @@
 // printfn "%s" name
 
 
-for i in [1..100] do
-    let result = 
-        if i % 15 = 0 then
-            "FizzBuzz"
-        elif i % 5 = 0 then
-            "Buzz"
-        elif i % 3 = 0 then
-            "Fizz"
-        else
-            string i
-    printfn "%s" result
+// for i in [1..100] do
+//     let result = 
+//         if i % 15 = 0 then
+//             "FizzBuzz"
+//         elif i % 5 = 0 then
+//             "Buzz"
+//         elif i % 3 = 0 then
+//             "Fizz"
+//         else
+//             string i
+//     printfn "%s" result
 
+
+// for i = 1 to 10 do
+//     printfn "%d" i
+
+
+// let number = 31
+// let mutable prime = true
+// for i = 2 to (number - 1) do
+//     match (number % i) with 
+//     | 0 -> prime <- false
+//     | _ -> ()
+// let result = 
+//     if prime = true then
+//         "The given number is prime"
+//     else 
+//         "The given number is NOT prime"
+// printfn "%s" result
+
+// let x = 10
+// let y = 20
+
+// printfn "%d and %d" x y
+
+// ==================================== DAY 3 =====================================
+
+// let add a b = 
+//     a + b
+
+// // let result = add 3 4
+
+// // printfn "%d" result
+
+// let first = add 3
+
+// let second = first 4
+
+// printfn "%d" second
+
+///////////////// not working
+// let add a b = 
+//     a + b
+
+// let arithemetic func c d
+//     func c d
+
+// let result = arithemetic add 8 9
+// printfn "%d" result
+
+
+/////////////////////////////// PIPE function usage
+// let double = 
+//     fun x -> 2 * x
+
+// // let d = double 5
+
+// let d = 5 |> double
+
+// printfn "%d" d
+
+// let add a b =
+//     a + b
+
+// let r = 9 |> add
+// let res = 1 |> r 
+
+// printfn "%d" res
+
+let add a = 
+    fun y -> a + y
+
+let applyOp func a b = 
+    func a b
+
+printfn "%d" (applyOp 3 4)
