@@ -261,3 +261,42 @@
 //         b <- tot
 
 // fibo 10
+
+
+// Palindrome
+
+// let checkpalindrome (str: string) = 
+//     let len = str.Length
+    
+//     let rec check i = 
+//         if i >= (len / 2) then
+//             true
+//         elif str[i] <> str[len - 1 - i] then
+//             false
+//         else 
+//             check (i + 1)
+//     check 0
+
+// let s = "theweeknd"
+// let res = checkpalindrome s
+
+// printfn "%b" res
+
+
+
+// String Reverse
+
+// Wrong
+// let reversestring (str: string) =
+//     let mutable input = str
+//     let len = str.Length
+//     for i = 0 to int ((len / 2) - 1) do
+//         let store <- input[i]
+//         input[i] <- input[len - 1 - i]
+//         input[len - i - 1] <- store
+//     input
+
+// let inp = "kaushal"
+// let res = reversestring inp
+
+// printfn "%s" res

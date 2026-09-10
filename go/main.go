@@ -4,144 +4,193 @@ import (
 	"fmt"
 )
 
-func sayHello(name string) {
-	fmt.Println(name + " is the GOAT from function")
+func main() {
+	fmt.Println("The Weeknd is the GOAT")
+
 }
 
-// func add(a, b int) int {
-// 	fmt.Println(a + b)
-// 	return a + b
+// func multiplicationTable(n int) {
+// 	for i := 1; i <= 20; i++ {
+// 		fmt.Printf("%d x %d = %d\n", n, i, (17 * i))
+// 	}
 // }
 
-// not a good practice to use in the modern systems
-func add(a, b int) (result int) {
-	result = a + b
-	return
-}
+// func factorial(n int) int {
+// 	ans := 1
+// 	for i := 2; i <= n; i++ {
+// 		ans *= i
+// 	}
+// 	return ans
+// }
 
-// multiple return values
-func arithemetic(a, b int) (sum int, diff int, err error) {
+// func fibo(n int) {
+// 	if n == 1 {
+// 		fmt.Println("1")
+// 		return
+// 	} else if n == 2 {
+// 		fmt.Println("1 1")
+// 		return
+// 	} else {
+// 		fmt.Println("1 1 ")
+// 		a := 1
+// 		b := 1
+// 		fmt.Printf("\b")
+// 		for i := 0; i < (n - 2); i++ {
+// 			c := a + b
+// 			fmt.Printf("%d ", c)
+// 			a = b
+// 			b = c
+// 		}
+// 	}
+// }
 
-	if a < b {
-		return 0, 0, fmt.Errorf("a < b bro")
-	}
+// func isPrime(n int) bool {
+// 	for i := 2; i*i <= n; i++ {
+// 		if n%i == 0 {
+// 			return false
+// 		}
+// 	}
+// 	return true
+// }
 
-	sum = a + b
-	diff = a - b
-	err = nil
-	return
+// func sayHello(name string) {
+// 	fmt.Println(name + " is the GOAT from function")
+// }
 
-}
+// // func add(a, b int) int {
+// // 	fmt.Println(a + b)
+// // 	return a + b
+// // }
 
-// return with error
-func divide(a, b float64) (float64, error) {
-	if b == 0 {
-		return 0, fmt.Errorf("Cannot divide by 0")
-	}
+// // not a good practice to use in the modern systems
+// func add(a, b int) (result int) {
+// 	result = a + b
+// 	return
+// }
 
-	return a / b, nil
-}
+// // multiple return values
+// func arithemetic(a, b int) (sum int, diff int, err error) {
 
-// take any number of input as parameters
-func giveTotal(numbers ...int) int {
-	total := 0
+// 	if a < b {
+// 		return 0, 0, fmt.Errorf("a < b bro")
+// 	}
 
-	for _, num := range numbers {
-		total += num
-	}
+// 	sum = a + b
+// 	diff = a - b
+// 	err = nil
+// 	return
 
-	return total
-}
+// }
 
-// closures examples
-func counter() func() int {
-	count := 0
+// // return with error
+// func divide(a, b float64) (float64, error) {
+// 	if b == 0 {
+// 		return 0, fmt.Errorf("Cannot divide by 0")
+// 	}
 
-	return func() int {
-		count++
-		return count
-	}
-}
+// 	return a / b, nil
+// }
 
-func multiplier(x int) func(int) int {
-	return func(y int) int {
-		return x * y
-	}
-}
+// // take any number of input as parameters
+// func giveTotal(numbers ...int) int {
+// 	total := 0
 
-// defer example
-func deferex() {
+// 	for _, num := range numbers {
+// 		total += num
+// 	}
 
-	// defer is LIFO principle based STACK
-	defer fmt.Println("Goodbye")
+// 	return total
+// }
 
-	fmt.Println("Hello")
-}
+// // closures examples
+// func counter() func() int {
+// 	count := 0
 
-func main() {
-	// ==================================== DAY 3 ============================================
-	// fmt.Println("The Weeknd is the GOAT")
+// 	return func() int {
+// 		count++
+// 		return count
+// 	}
+// }
 
-	// sayHello("The Weeknd")
-	// sayHello("The Weeknd")
-	// sayHello("The Weeknd")
+// func multiplier(x int) func(int) int {
+// 	return func(y int) int {
+// 		return x * y
+// 	}
+// }
 
-	// add(2, 3)
-	// add(4, 5)
-	// add(8, 9)
+// // defer example
+// func deferex() {
 
-	// ans, err := divide(10, 5)
-	// fmt.Printf("%f, %s", ans, err)
+// 	// defer is LIFO principle based STACK
+// 	defer fmt.Println("Goodbye")
 
-	// add(2, 3)
-	// add(4, 5)
-	// add(8, 9)
+// 	fmt.Println("Hello")
+// }
 
-	// a, b, c := arithemetic(100, 20)
+// func main() {
+// 	// ==================================== DAY 3 ============================================
+// 	// fmt.Println("The Weeknd is the GOAT")
 
-	// fmt.Println(a)
-	// fmt.Println(b)
-	// // fmt.Println(c)
+// 	// sayHello("The Weeknd")
+// 	// sayHello("The Weeknd")
+// 	// sayHello("The Weeknd")
 
-	// if c == nil {
-	// 	fmt.Println("There is no error")
-	// } else {
-	// 	fmt.Println("The is a Error mf")
-	// }
+// 	// add(2, 3)
+// 	// add(4, 5)
+// 	// add(8, 9)
 
-	// ans := giveTotal(10, 20, 30, 2, 4, 55, 6, 3, 33, 2, 3, 77, 7, 99)
+// 	// ans, err := divide(10, 5)
+// 	// fmt.Printf("%f, %s", ans, err)
 
-	// fmt.Println(ans)
+// 	// add(2, 3)
+// 	// add(4, 5)
+// 	// add(8, 9)
 
-	// numbers := []int{1, 2, 3, 4, 5}
+// 	// a, b, c := arithemetic(100, 20)
 
-	// res := giveTotal(numbers...)
-	// fmt.Println(res)
+// 	// fmt.Println(a)
+// 	// fmt.Println(b)
+// 	// // fmt.Println(c)
 
-	// func() {
-	// 	fmt.Println("Hello")
-	// }()
+// 	// if c == nil {
+// 	// 	fmt.Println("There is no error")
+// 	// } else {
+// 	// 	fmt.Println("The is a Error mf")
+// 	// }
 
-	// next := counter()()
-	// fmt.Println(next())
-	// fmt.Println(next())
-	// fmt.Println(next())
-	// fmt.Println(next())
+// 	// ans := giveTotal(10, 20, 30, 2, 4, 55, 6, 3, 33, 2, 3, 77, 7, 99)
 
-	// fmt.Println(next)
-	// fmt.Println(next)
-	// fmt.Println(next)
-	// fmt.Println(next)
+// 	// fmt.Println(ans)
 
-	// forx := multiplier(5)
-	// fory := multiplier(6)
+// 	// numbers := []int{1, 2, 3, 4, 5}
 
-	// fmt.Println(forx(5))
-	// fmt.Println(fory(6))
+// 	// res := giveTotal(numbers...)
+// 	// fmt.Println(res)
 
-	deferex()
+// 	// func() {
+// 	// 	fmt.Println("Hello")
+// 	// }()
 
-}
+// 	// next := counter()()
+// 	// fmt.Println(next())
+// 	// fmt.Println(next())
+// 	// fmt.Println(next())
+// 	// fmt.Println(next())
+
+// 	// fmt.Println(next)
+// 	// fmt.Println(next)
+// 	// fmt.Println(next)
+// 	// fmt.Println(next)
+
+// 	// forx := multiplier(5)
+// 	// fory := multiplier(6)
+
+// 	// fmt.Println(forx(5))
+// 	// fmt.Println(fory(6))
+
+// 	deferex()
+
+// }
 
 // func main() {
 
