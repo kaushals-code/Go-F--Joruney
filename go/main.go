@@ -1,13 +1,81 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	fmt.Println("The Weeknd is the GOAT")
-
+	fmt.Println("The Weeknd is the GOAT bro")
 }
+
+// ===================================== DAY 4 ====================================================
+
+// func total(n ...int) int {
+// 	ans := 0
+// 	for _, value := range n {
+// 		ans += value
+// 	}
+// 	return ans
+// }
+
+// func main() {
+// 	fmt.Println("The Weeknd is the GOAT")
+
+// array := []int{1, 2, 3}
+
+// newArray := append(array, 4)
+
+// fmt.Println(array)
+// fmt.Println(newArray)
+
+// numbers := []int{1, 2, 3}
+
+// fmt.Println(len(numbers))
+
+// a := []int{1, 2}
+// b := []int{3, 4}
+
+// c := append(a, b...)
+
+// fmt.Println(c)
+
+// numbers := []int{10, 20, 30, 40}
+
+// part := numbers[1:3]
+
+// fmt.Println(part)
+
+// revise the make() function once again
+
+// org := []int{10, 20, 30}
+
+// cp := make([]int, len(org))
+
+// copy(cp, org)
+
+// cp[0] = 100
+
+// fmt.Println(cp)
+// fmt.Println(org)
+
+// s := []int{}
+// fmt.Println(s == nil)
+
+// var t []int
+// fmt.Println(t == nil)
+
+// mat := [][]int{
+// 	{1, 2, 3},
+// 	{4, 5, 6},
+// 	{7, 8, 9},
+// }
+
+// fmt.Println(mat)
+
+// array := []int{10, 20, 30, 40, 50, 60}
+// res := total(array...)
+// fmt.Println(res)
+// }
+
+// ====================================== SOME EXTRA PROBLEMS =====================================
 
 // func multiplicationTable(n int) {
 // 	for i := 1; i <= 20; i++ {

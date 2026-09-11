@@ -143,7 +143,7 @@
 
 // printfn "%d and %d" x y
 
-// ==================================== DAY 3 =====================================
+// ====================================================== DAY 3 ================================================
 
 // let add a b = 
 //     a + b
@@ -300,3 +300,52 @@
 // let res = reversestring inp
 
 // printfn "%s" res
+
+// ================================================== DAY 4 ==========================================
+
+// a normal list which is immutble by default
+// let list = [1; 2; 3; 4; 5]
+
+// for i = 0 to (list.Length - 1) do
+//     printfn "%d\n" list[i]
+
+// let a = [1; 2; 3]
+// let b = [4; 5; 6]
+
+// let add0toa = 0 :: a
+// let final = -1 :: add0toa
+
+// for i = 0 to (final.Length - 1) do
+//     printfn "%d" final[i]
+
+// let c = b @ a
+// for i = 0 to (c.Length - 1) do
+//     printfn "%d" c[i]
+
+// // arrays are mutable by default
+// let arr = [| 1; 2; 3; 4; 5 |]
+
+// arr[0] <- 100
+
+
+// for i = 0 to (arr.Length - 1) do
+//     printfn "%d" arr[i]
+
+
+// a sequence is said to be lazy
+// let numbers : seq<int> = seq { 1; 2; 3; 4; 5; 6 }
+// it is very usefull because of its lazy value initialization
+
+// let squares = 
+//     [for x in 1 .. 10 do
+//         if x % 2 = 0 then
+//             yield x * x]
+
+// for i = 0 to (squares.Length - 1) do 
+//     printfn "%d" squares[i]
+
+let numbers = 
+    Array.init 5 (fun i -> i * 10)
+
+for i = 0 to (numbers.Length - 1) do
+    printfn "%d" numbers[i]
