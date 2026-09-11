@@ -1,10 +1,101 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+// ===================================== DAY 5 ====================================================
 
 func main() {
 	fmt.Println("The Weeknd is the GOAT bro")
+
+	// numbers := []int{1, 2, 3, 4, 5}
+	// var double []int
+
+	// for _, x := range numbers {
+	// 	double = append(double, 2*x)
+	// }
+
+	// fmt.Println(double)
+
+	// // Actual Filter implementation
+	// numbers := []int{1, 2, 3, 4, 5}
+	// even := []int{}
+
+	// for _, x := range numbers {
+	// 	if x%2 == 0 {
+	// 		even = append(even, x)
+	// 	}
+	// }
+
+	// fmt.Println(even)
+
+	// 	numbers := []int{1, 2, 3, 4, 5}
+	// 	// even := []int{}
+	// 	var even []int
+
+	// 	for _, x := range numbers {
+	// 		if x%2 == 0 {
+	// 			even = append(even, x)
+	// 		}
+	// 	}
+
+	// 	fmt.Println(even)
+
+	// String are immutable in go!
+	// str := "theweeknd"
+	// for _, x := range str {
+	// 	x = 'a'
+	// }
+
+	// fmt.Printf(str)
+
+	// nums := []int{4, 2, 6, 3, 1}
+	// slices.Sort(nums)
+
+	// fmt.Println(nums)
+
+	// fmt.Println(slices.Contains(nums, 5))
+
+	// students := []Student{
+	// 	{"Alice", 90, 85, 88},
+	// 	{"Bob", 75, 80, 72},
+	// 	{"Charlie", 95, 92, 96},
+	// 	{"Diana", 82, 88, 84},
+	// 	{"Ethan", 68, 70, 75},
+	// 	{"Fiona", 91, 89, 93},
+	// 	{"George", 79, 83, 80},
+	// 	{"Hannah", 88, 85, 90},
+	// 	{"Ian", 70, 65, 72},
+	// 	{"Julia", 96, 94, 98},
+	// 	{"Kevin", 84, 82, 86},
+	// 	{"Laura", 77, 79, 81},
+	// 	{"Michael", 89, 91, 88},
+	// 	{"Nora", 83, 80, 85},
+	// 	{"Oscar", 92, 95, 90},
+	// 	{"Paula", 74, 78, 76},
+	// 	{"Quinn", 86, 84, 89},
+	// 	{"Rachel", 90, 88, 92},
+	// 	{"Sam", 78, 75, 80},
+	// 	{"Tina", 94, 92, 95},
+	// }
+
+	// slices.SortFunc(students, func(a, b Student) int {
+	// 	// return b.marks - a.marks
+	// 	avg1 := (a.math + a.physics + a.chemistry) / 3
+	// 	avg2 := (b.math + b.physics + b.chemistry) / 3
+	// 	return avg2 - avg1
+	// })
+
+	// fmt.Println(students)
 }
+
+// type Student struct {
+// 	name      string
+// 	math      int
+// 	physics   int
+// 	chemistry int
+// }
 
 // ===================================== DAY 4 ====================================================
 

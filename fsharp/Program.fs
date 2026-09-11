@@ -344,8 +344,152 @@
 // for i = 0 to (squares.Length - 1) do 
 //     printfn "%d" squares[i]
 
-let numbers = 
-    Array.init 5 (fun i -> i * 10)
+// let numbers = 
+//     Array.init 5 (fun i -> i * 10)
 
-for i = 0 to (numbers.Length - 1) do
-    printfn "%d" numbers[i]
+// for i = 0 to (numbers.Length - 1) do
+//     printfn "%d" numbers[i]
+
+
+// ============================================== DAY 4 PRACTICE ====================================================
+// List Implementation
+// let numbers = [1; 2; 3; 4; 5]
+
+// for i = 0 to (numbers.Length - 1) do 
+//     printfn "%d" numbers[i]
+
+// Array 
+// let mylist = [| 1; 2; 3; 4; 5 |]
+// mylist[0] <- 200
+
+// for i = 0 to (mylist.Length - 1) do 
+//     printfn "%d" mylist[i]
+
+// Sequence
+// let sequence : seq<int> = seq {1; 2; 3; 3; 5}
+
+// Operations on Array
+// let numbers = [1; 2; 3; 4; 5]
+// let squares = 
+//     [for x in numbers do 
+//         yield x * x]
+
+// for i = 0 to (squares.Length - 1) do 
+//     printfn "%d" squares[i]
+
+// Array.init
+
+// let nums = 
+//     Array.init 5 (fun i -> (i + 1) * (i + 1))
+
+// for i = 0 to (nums.Length - 1) do 
+//     printfn "%d" nums[i]
+
+// ============================================== DAY 5 =====================================================
+
+// let numbers = [1; 2; 3; 4; 5; 6; 7; 8; 9; 10]
+
+// let even = 
+//     numbers 
+//     |> List.filter (fun x -> x % 2 = 0)
+
+// let sum = 
+//     numbers
+//     |> List.fold (fun total n -> total + n) 0
+
+// let chain = 
+//     numbers 
+//     |> List.filter (fun x -> x % 2 = 0) 
+//     |> List.map (fun x -> x * 2)
+//     |> List.fold (fun total x -> total + x) 0
+
+// printfn "%d" chain
+
+// let nums = [4; 2; 6; 8; 5; 1; 0]
+
+// let sorted = 
+//     nums 
+//     |> List.sort
+
+// printfn "%A" sorted
+
+// type Student =
+//     {
+//         Name: string
+//         Math: int
+//         Physics: int
+//         Chemistry: int
+//         Grade: string
+//     }
+
+// let students = 
+//     [
+//         {
+//             Name = "Alice"
+//             Math = 85
+//             Physics = 43
+//             Chemistry = 93
+//             Grade = "A"
+//         };
+//         {
+//             Name = "Bob"
+//             Math = 84
+//             Physics = 99
+//             Chemistry = 93
+//             Grade = "B"
+//         };
+//         {
+//             Name = "Charlie"
+//             Math = 80
+//             Physics = 88
+//             Chemistry = 66
+//             Grade = "A"
+//         }
+//     ]
+
+// let order = 
+//     students
+//     |> List.sortByDescending (fun s -> s.Math)
+
+// let order = 
+//     students
+//     |> List.sumBy (fun x -> x.Math)
+
+// let order = 
+//     students
+//     |> List.averageBy (fun x -> float x.Math)
+
+// let groupby = 
+//     students
+//     |> List.groupBy (fun x -> x.Grade)
+
+// printfn "%A" groupBy
+
+// let numbers = [1; 2; 3; 4; 5; 6; 6]
+// let result = 
+//     numbers 
+//     |> List.choose (fun x -> 
+//         if x % 2 = 0 then
+//             Some (x * 2)
+//         else 
+//             None)
+
+// printfn "%A" result
+
+// let numbers = [1; 2; 3; 4; 5]
+// let result = 
+//     numbers
+//     |> List.collect (fun x -> [x; x])
+
+// printfn "%A" result
+
+// the above operations with Array also
+// let numbers = [|4; 1; 5; 3; 8; 9; 5|]
+
+// let sorted = 
+//     numbers 
+//     |> 
+
+// printfn "%A" sorted
+
+
