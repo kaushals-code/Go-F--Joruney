@@ -1,94 +1,240 @@
 package main
 
-import (
-	"fmt"
-)
+// ===================================== DAY 8 ===================================================
+
+// type Song struct {
+// 	name   string
+// 	album  string
+// 	artist string
+// }
+
+// nested struct example
+// type Address struct {
+// 	houseno string
+// 	area    string
+// }
+
+// type User struct {
+// 	name    string
+// 	email   string
+// 	phone   string
+// 	address Address
+// }
+
+// func altermarks(student *Student) {
+// 	student.marks += 50
+// }
+
+// type Student struct {
+// 	name  string
+// 	marks int
+// }
+
+// for embedded structs
+// type Where struct {
+// 	hno string
+// }
+
+// type User struct {
+// 	name string
+// 	Where
+// }
+
+// func main() {
+// wickedgames := Song{
+// 	name:   "Wicked Games",
+// 	album:  "Trilogy",
+// 	artist: "The Weeknd",
+// }
+
+// fmt.Println(wickedgames.name)
+// // fmt.Println(wickedgames.album)
+// // fmt.Println(wickedgames.artist)
+
+// newuser := User{
+// 	name: "The Weeknd"
+// 	email: "theweeknd@weeknd.com"
+// 	phone: "999999"
+// 	address: Address{
+// 		houseno: "27-152"
+// 		area: "Toronto"
+// 	}
+// }
+
+// creation of a pointer
+
+// wgptr := &wickedgames
+// fmt.Println(wgptr)
+
+// fmt.Println(*&wgptr.artist)
+// fmt.Printf("%p is the pointer\n", wgptr)
+// fmt.Printf("%s is the pointer\n", wgptr.name)
+
+// wgptr.artist = "theweeknd"
+// fmt.Println(wgptr.artist)
+
+// for anonymous struct
+// user := struct {
+// 	name  string
+// 	email string
+// }{
+// 	name:  "kaushal singh",
+// 	email: "kaushal@kaushal.com",
+// }
+
+// fmt.Println(user.name)
+
+// for embedded structs
+
+// user := User{
+// 	name: "kaushalsingh",
+// 	Where: Where{
+// 		hno: "222222",
+// 	},
+// }
+
+// fmt.Println(user.Where.hno)
+
+// xo := Student{
+// 	name:  "theweeknd",
+// 	marks: 100,
+// }
+
+// to := Student{
+// 	name:  "theweeknd",
+// 	marks: 100,
+// }
+
+// fmt.Printf("%p\n%p", &xo, &to)
+
+// altermarks(&xo)
+
+// fmt.Println(xo.marks)
+
+// }
+
+// ===================================== DAY 6 ====================================================
+
+// func main() {
+// 	fmt.Println("The Weeknd is the GOAT bro")
+
+// 	// mapp := map[string]int{
+// 	// 	"titvik": 48,
+// 	// }
+// 	// mapp["kaushal"] = 56
+// 	// mapp["sushanth"] = 55
+
+// 	// fmt.Println(mapp["titvik"])
+
+// 	// const hello int = 44
+
+// 	// mapp := map[string]int{
+// 	// 	"kaushal":  56,
+// 	// 	"sushanth": 55,
+// 	// 	"ritvik":   48,
+// 	// }
+
+// 	// fmt.Println(mapp["kaushal"])
+
+// 	// mapp["ritvik"] = 33
+// 	// fmt.Println(mapp["ritvik"]) // 33
+
+// 	// delete(mapp, "ritvik")
+// 	// fmt.Println(mapp)
+
+// 	// value, isExist := mapp["sanam"]
+// 	// fmt.Printf("%d key %b", value, isExist)
+// 	// // fmt.Printf(value + " " + isExist) // produces error
+
+// 	fmt.Println(mapp)
+
+// }
 
 // ===================================== DAY 5 ====================================================
 
-func main() {
-	fmt.Println("The Weeknd is the GOAT bro")
+// func main() {
+// 	fmt.Println("The Weeknd is the GOAT bro")
 
-	// numbers := []int{1, 2, 3, 4, 5}
-	// var double []int
+// numbers := []int{1, 2, 3, 4, 5}
+// var double []int
 
-	// for _, x := range numbers {
-	// 	double = append(double, 2*x)
-	// }
+// for _, x := range numbers {
+// 	double = append(double, 2*x)
+// }
 
-	// fmt.Println(double)
+// fmt.Println(double)
 
-	// // Actual Filter implementation
-	// numbers := []int{1, 2, 3, 4, 5}
-	// even := []int{}
+// // Actual Filter implementation
+// numbers := []int{1, 2, 3, 4, 5}
+// even := []int{}
 
-	// for _, x := range numbers {
-	// 	if x%2 == 0 {
-	// 		even = append(even, x)
-	// 	}
-	// }
+// for _, x := range numbers {
+// 	if x%2 == 0 {
+// 		even = append(even, x)
+// 	}
+// }
 
-	// fmt.Println(even)
+// fmt.Println(even)
 
-	// 	numbers := []int{1, 2, 3, 4, 5}
-	// 	// even := []int{}
-	// 	var even []int
+// 	numbers := []int{1, 2, 3, 4, 5}
+// 	// even := []int{}
+// 	var even []int
 
-	// 	for _, x := range numbers {
-	// 		if x%2 == 0 {
-	// 			even = append(even, x)
-	// 		}
-	// 	}
+// 	for _, x := range numbers {
+// 		if x%2 == 0 {
+// 			even = append(even, x)
+// 		}
+// 	}
 
-	// 	fmt.Println(even)
+// 	fmt.Println(even)
 
-	// String are immutable in go!
-	// str := "theweeknd"
-	// for _, x := range str {
-	// 	x = 'a'
-	// }
+// String are immutable in go!
+// str := "theweeknd"
+// for _, x := range str {
+// 	x = 'a'
+// }
 
-	// fmt.Printf(str)
+// fmt.Printf(str)
 
-	// nums := []int{4, 2, 6, 3, 1}
-	// slices.Sort(nums)
+// nums := []int{4, 2, 6, 3, 1}
+// slices.Sort(nums)
 
-	// fmt.Println(nums)
+// fmt.Println(nums)
 
-	// fmt.Println(slices.Contains(nums, 5))
+// fmt.Println(slices.Contains(nums, 5))
 
-	// students := []Student{
-	// 	{"Alice", 90, 85, 88},
-	// 	{"Bob", 75, 80, 72},
-	// 	{"Charlie", 95, 92, 96},
-	// 	{"Diana", 82, 88, 84},
-	// 	{"Ethan", 68, 70, 75},
-	// 	{"Fiona", 91, 89, 93},
-	// 	{"George", 79, 83, 80},
-	// 	{"Hannah", 88, 85, 90},
-	// 	{"Ian", 70, 65, 72},
-	// 	{"Julia", 96, 94, 98},
-	// 	{"Kevin", 84, 82, 86},
-	// 	{"Laura", 77, 79, 81},
-	// 	{"Michael", 89, 91, 88},
-	// 	{"Nora", 83, 80, 85},
-	// 	{"Oscar", 92, 95, 90},
-	// 	{"Paula", 74, 78, 76},
-	// 	{"Quinn", 86, 84, 89},
-	// 	{"Rachel", 90, 88, 92},
-	// 	{"Sam", 78, 75, 80},
-	// 	{"Tina", 94, 92, 95},
-	// }
+// students := []Student{
+// 	{"Alice", 90, 85, 88},
+// 	{"Bob", 75, 80, 72},
+// 	{"Charlie", 95, 92, 96},
+// 	{"Diana", 82, 88, 84},
+// 	{"Ethan", 68, 70, 75},
+// 	{"Fiona", 91, 89, 93},
+// 	{"George", 79, 83, 80},
+// 	{"Hannah", 88, 85, 90},
+// 	{"Ian", 70, 65, 72},
+// 	{"Julia", 96, 94, 98},
+// 	{"Kevin", 84, 82, 86},
+// 	{"Laura", 77, 79, 81},
+// 	{"Michael", 89, 91, 88},
+// 	{"Nora", 83, 80, 85},
+// 	{"Oscar", 92, 95, 90},
+// 	{"Paula", 74, 78, 76},
+// 	{"Quinn", 86, 84, 89},
+// 	{"Rachel", 90, 88, 92},
+// 	{"Sam", 78, 75, 80},
+// 	{"Tina", 94, 92, 95},
+// }
 
-	// slices.SortFunc(students, func(a, b Student) int {
-	// 	// return b.marks - a.marks
-	// 	avg1 := (a.math + a.physics + a.chemistry) / 3
-	// 	avg2 := (b.math + b.physics + b.chemistry) / 3
-	// 	return avg2 - avg1
-	// })
+// slices.SortFunc(students, func(a, b Student) int {
+// 	// return b.marks - a.marks
+// 	avg1 := (a.math + a.physics + a.chemistry) / 3
+// 	avg2 := (b.math + b.physics + b.chemistry) / 3
+// 	return avg2 - avg1
+// })
 
-	// fmt.Println(students)
-}
+// fmt.Println(students)
+// }
 
 // type Student struct {
 // 	name      string

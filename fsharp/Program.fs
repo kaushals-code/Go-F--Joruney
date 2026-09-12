@@ -600,14 +600,14 @@ we want
 // for i in rollnos do 
 //     printfn "%d" i
 
-let data = 
-    [
-        ("kaushal", 56)
-        ("triansh", 60)
-        ("theweeknd", 1)
-    ]
+// let data = 
+//     [
+//         ("kaushal", 56)
+//         ("triansh", 60)
+//         ("theweeknd", 1)
+//     ]
 
-let mapp = Map.ofList data
+// let mapp = Map.ofList data
 
 // mapp
 // |> Map.iter (
@@ -625,4 +625,30 @@ let mapp = Map.ofList data
 
 // printfn "%d" res
 
+// let newmap = 
+//     mapp
+//     |> Map.add "triansh" 45
 
+// newmap
+// |> Map.iter (fun x y -> printf "%s -> %d\n" x y)
+
+(*
+kaushal -> 56
+theweeknd -> 1
+triansh -> 45
+*)
+
+// let remmap = 
+//     newmap
+//     |> Map.remove "goat"
+
+// remmap
+// |> Map.iter (fun x y -> printf "%s -> %d\n" x y)
+
+// let res = 
+//     newmap
+//     |> Map.containsKey "theweeknd"
+
+// printfn "%b" res
+
+// printfn "%d" newmap.Count
