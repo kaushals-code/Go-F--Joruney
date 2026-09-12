@@ -493,3 +493,136 @@
 // printfn "%A" sorted
 
 
+// ======================================= DAY 6 ===========================================================
+
+// let rollnos =
+//     Map.ofList [
+//         ("kaushal", 56)
+//         ("theweeknd", 1)
+//         ("sushanth", 55)
+//     ]
+// maps are immutable
+
+// let newrolls = 
+//     rollnos
+//     |> Map.remove "kaushal"
+
+// printfn "%d" rollnos["kaushal"]
+
+// let iskaushalthere = 
+//     rollnos
+//     |> Map.tryFind "kaushal"
+
+
+// match rollnos |> Map.tryFind "sushanth" with 
+// | Some(x) -> 
+//     printfn "Age: %d" x
+// | None -> 
+//     printfn "sushanth not found"
+
+// rollnos
+// |> Map.iter (fun x y -> 
+//     printfn "%s -> %d" x y)
+
+// it seems that the counting the frequeincies of the words are so hard here
+// although let me try it once
+
+//lets revise Map.fold
+
+// let number = [1; 2; 3; 4; 5]
+
+// let sum = 
+//     number
+//     |> List.fold (fun total x -> total + x) 0
+
+// printfn "%d is the total" sum
+
+// based on the same concept
+
+// let words = ["go"; "fsharp"; "go"; "rust"; "go"; "fsharp"]
+
+(*
+we want 
+    go -> 3
+    fshart -> 2
+    rust -> 1
+*)
+
+// let frequencies = 
+//     words 
+//     |> List.fold (fun counts word ->
+//         let current = 
+//             counts
+//             |> Map.tryFind word
+//             |> Option.defaultValue 0
+        
+//         counts
+//         |> Map.add word (current + 1)
+//     ) Map.empty
+
+// frequencies
+// |> Map.iter (
+//     fun x y -> printfn "%s -> %d" x y
+// )
+
+// open System.Collections.Generic
+
+// let ages = Dictionary<string, int>()
+
+// ages["kaushal"] <- 19
+// ages["theweeknd"] <- 36
+
+// ages["kaushal"] <- 20
+
+// ages["sushanth"] <- 55
+
+// for KeyValue(key, value) in ages do 
+//     printfn "%s -> %d" key value
+
+// ages.Remove("sushanth") |> ignore
+
+// for KeyValue(key, value) in ages do 
+//     printf "%s -> %d" key, value
+
+// open System.Collections.Generic
+
+// let rollnos = Dictionary<string, int>()
+
+// rollnos["kaushal"] <- 56
+// rollnos["sushanth"] <- 55
+// rollnos["ritvik"] <- 48
+
+// for KeyValue(key, value) in rollnos do 
+//     printfn "%s -> %d" key value
+
+// I didn't remember that the list could be iterated like this
+// let rollnos = [1; 2; 3; 4; 5]
+// for i in rollnos do 
+//     printfn "%d" i
+
+let data = 
+    [
+        ("kaushal", 56)
+        ("triansh", 60)
+        ("theweeknd", 1)
+    ]
+
+let mapp = Map.ofList data
+
+// mapp
+// |> Map.iter (
+//     fun x y -> printfn "%s -> %d" x y
+// )
+
+// let res = 
+//     mapp
+//     |> Map.tryFind "abcd"
+//     |> Option.defaultValue 0
+
+// let res = 
+//     mapp
+//     |> Map.find "kaushal"
+
+// printfn "%d" res
+
+
