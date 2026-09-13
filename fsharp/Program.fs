@@ -652,3 +652,66 @@ triansh -> 45
 // printfn "%b" res
 
 // printfn "%d" newmap.Count
+
+// ============================================= DAY 8 =======================================================
+
+// type Song = {
+//     Name: string
+//     Album: string
+//     Artist: string
+// }
+
+// let wickedgames = {
+//     Name = "Wicked Games"
+//     Album = "Trilogy"
+//     Artist = "The Weeknd"
+// }
+
+// printfn "%F" wickedgames
+
+// type User = {
+//     Name: string
+//     Age: int
+// }
+
+// let user1 = {
+//     Name = "User 1"
+//     Age = 18
+// }
+
+// let user2 = {
+//     Name = "User 2"
+//     Age = 20
+// }
+
+// let userdupe = {
+//     user1 with 
+//         Age = 25
+//         Name = "User Dupe"
+// }
+
+// printfn "%s" userdupe.Name
+
+// type Album = {
+//     Name: string
+//     Artist: string
+// }
+
+// type Song = {
+//     Song_Name: string
+//     Album: Album
+// }
+
+// let wg = {
+//     Song_Name = "Wicked Games"
+//     Album = {
+//         Name = "Trilogy"
+//         Artist = "The Weeknd" 
+//     }
+// }
+
+// printfn "%s" wg.Album.Artist
+
+// anonymous records
+// let point = {| X= 10; Y= 20 |}
+// printfn "%d %d" point.X point.Y
