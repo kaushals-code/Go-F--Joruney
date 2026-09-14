@@ -908,3 +908,100 @@ triansh -> 45
 // let user = User.create("kaushal", 19)
 
 // printfn "%d" user.age
+
+// =========================================== DAY  10 ===========================================
+
+// just basics
+// type User = {
+//     name: string
+//     age: int
+// }
+
+// let user = {
+//     name= "kaushal"
+//     age= 19
+// }
+
+// printfn "%s age is %d" user.name user.age
+
+// type Shape = 
+//     | Rectangle of Length : int * Width : int
+//     | Circle of Radius : int
+
+// let rect = Rectangle(10, 5)
+
+// let area = 
+//     match rect with 
+//     | Rectangle (len, wid) -> 
+//         printfn "%d is the area" (len * wid)
+//     | Circle rad -> 
+//         printfn "%f is the area" (3.14 * float (rad * rad))
+
+// type Person =
+//     | Student of name: string
+//     | Teacher of name: string * salary: int
+
+// let func t = 
+//     match t with 
+//         | Student n -> 
+//             // printfn "%s is the student name" n
+//             // n + " is the student name" // not correct
+//             $"{n} is the student name"
+//         | Teacher (n, s) -> 
+//             // printfn "%s is the teacher name and his/her salary is %d" n s
+//             // n + " is the teacher name and his/her salary is " + s
+//             $"{n} is the teacher name and his/her salary is {s}"
+
+// let t = Teacher("Sanjana", 100000)
+// let s = Student("kaushal")
+
+// printfn "%s" (func t)
+// printfn "%s" (func s)
+
+// Typical class in F# is (just revision)
+// type User =
+//     {
+//         Name: string
+//         Age: int
+//     }
+
+//     member this.isAdult = 
+//         if this.Age >= 18 then
+//             true
+//         else 
+//             false
+
+//     static member createUser(name: string, age: int) =
+//         {
+//             Name= name
+//             Age= age
+//         }
+
+// let user = User.createUser("kaushal", 19)
+
+// printfn "%d" user.Age
+// printfn "%b" user.isAdult
+
+// F# objects revision
+// type User(name: string, age: int) = 
+//     member val Name = name with get, set
+//     member val Age = age with get, set
+
+// let user = User("kaushal", 19)
+
+// printfn $"{user.Name} age is {user.Age}"
+
+// This is a interface
+// type ISpeaker = 
+//     abstract member Speak(): unit -> string
+
+// type Dog(name: string) = 
+//     interface ISpeaker with 
+//         member _.Speak() = 
+//             "Woff! my name is " + name
+    
+// let dog = Dog("sanam")
+
+// let speaker = dog :> ISpeaker
+
+// printfn "%s" (speaker.Speak())

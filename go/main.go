@@ -1,5 +1,48 @@
 package main
 
+// =================================== DAY 11 ======================================================
+
+// type Shape interface {
+// 	Area() float64
+// }
+
+// type Circle struct {
+// 	Radius int
+// }
+
+// func (c Circle) Area() float64 {
+// 	return 3.14 * float64(c.Radius*c.Radius)
+// }
+
+// func main() {
+// 	fmt.Println("The Weeknd is the GOAT bro")
+
+// 	var s Shape
+// 	s = Circle{
+// 		Radius: 5,
+// 	}
+
+// 	// fmt.Println(c.Area()) // works perfectly fine
+
+// 	switch s.(type) {
+// 	case Circle:
+// 		fmt.Println(s.Area())
+// 	default:
+// 		fmt.Println("No such shape")
+// 	}
+
+// 	var v any = 10
+
+// 	switch a := v.(type) {
+// 	case int:
+// 		fmt.Println(a + 10)
+// 	case string:
+// 		fmt.Println(a + " Hello")
+// 	default:
+// 		fmt.Println("The type is not recognized")
+// 	}
+// }
+
 // =================================== DAY 10 ======================================================
 
 // interfact
