@@ -1,5 +1,161 @@
 package main
 
+// =================================== DAY 10 ======================================================
+
+// interfact
+// type Car interface {
+// 	Revv() string
+// 	Race() string
+// }
+
+// type Nexon struct {
+// 	Name string
+// }
+
+// func (n Nexon) Revv() string {
+// 	return "Nexon is Revving"
+// }
+
+// func (n Nexon) Race() string {
+// 	return "Let's race bro"
+// }
+
+// type Shape interface {
+// 	Area() float64
+// }
+
+// type Circle struct {
+// 	Radius int
+// }
+
+// func (c Circle) Area() float64 {
+// 	return 3.14 * float64(c.Radius) * float64(c.Radius)
+// }
+
+// type Rectangle struct {
+// 	Height int
+// 	Width  int
+// }
+
+// func (r Rectangle) Area() float64 {
+// 	return float64(r.Height) * float64(r.Width)
+// }
+
+// type Square struct {
+// 	Side int
+// }
+
+// // accept interfact and return member returned value
+// func giveArea(s Shape) float64 {
+// 	return s.Area()
+// }
+
+// func giveCircle(radius int) Circle {
+// 	return Circle{
+// 		Radius: radius,
+// 	}
+// }
+
+// // type switch
+// func typeswitch(x any) {
+// 	switch v := x.(type) {
+// 	case int:
+// 		fmt.Println("integer")
+
+// 	case string:
+// 		fmt.Printf("string %s", v)
+
+// 	default:
+// 		fmt.Println("Unknown type")
+// 	}
+// }
+
+// func getShape(s any) {
+// 	switch v := s.(type) {
+// 	case Circle:
+// 		fmt.Println(v.Radius)
+// 	case Rectangle:
+// 		fmt.Println(v.Height, v.Width)
+// 	}
+// }
+
+// type Speaker interface {
+// 	Speak() string
+// }
+
+// type Dog struct {
+// 	Name string
+// }
+
+// func (d *Dog) Speak() string {
+// 	d.Name = "Mr. " + d.Name
+// 	return "done"
+// }
+
+// func main() {
+// 	fmt.Println("The Weeknd is the GOAT bro")
+
+// var c Car
+
+// c = Nexon{Name: "Tata Nexon"}
+
+// fmt.Println(c.Revv())
+
+// var s Shape
+
+// s = Circle{
+// 	Radius: 5,
+// }
+
+// var sr Shape
+
+// sr = Rectangle{
+// 	Height: 20,
+// 	Width:  15,
+// }
+
+// // fmt.Println(s.Area())
+// // fmt.Println(sr.Area())
+// fmt.Println(giveArea(s))
+// fmt.Println(giveArea(sr))
+
+// var s Shape
+
+// s = giveCircle(5)
+// fmt.Println(giveArea(s))
+
+// var x any = "kaushal singh thakur"
+
+// value, ok := x.(int)
+
+// fmt.Println(value)
+// fmt.Println(ok)
+
+// if v, ok := x.(int); ok {
+// 	fmt.Println("int")
+// 	fmt.Println(v)
+// } else if v, ok := x.(string); ok {
+// 	fmt.Println("string")
+// 	fmt.Println(v)
+// }
+
+// check whethere the struct satisfies the interface
+// var _ Shape = Square() // if not then this line produces an error
+
+// 	var s Speaker
+// 	s = &Dog{
+// 		Name: "Bruno",
+// 	}
+
+// 	tw, ok := s.(*Dog)
+// 	if ok {
+// 		fmt.Println(tw.Name)
+// 	}
+
+// 	fmt.Println(s.Speak())
+
+// }
+
 // ===================================== DAY 9 ===================================================
 
 // type User struct {
