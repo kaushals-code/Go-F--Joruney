@@ -1,5 +1,76 @@
 package main
 
+// ===================================== DAY 9 ===================================================
+
+// type User struct {
+// 	name string
+// 	age  int
+// }
+
+// // constructor function for go
+// func newUser(name string, age int) User {
+// 	return User{
+// 		name: name,
+// 		age:  age,
+// 	}
+// }
+
+// func newUserPrt(name string, age int) *User {
+// 	return &User{
+// 		name: name,
+// 		age:  age,
+// 	}
+// }
+
+// // constructor with validation
+// func validNewUser(name string, age int) (*User, error) {
+// 	if age < 18 {
+// 		return nil, fmt.Errorf("This mf is less that 18 dawg")
+// 	}
+
+// 	return &User{
+// 		name: name,
+// 		age:  age,
+// 	}, nil
+// }
+
+// func (u *User) setage(n int) {
+// 	u.age = n
+// }
+
+// type Celcius float64
+
+// func (c Celcius) toCelcius() float64 {
+// 	return float64(c)*9/5 + 32
+// }
+
+// func main() {
+// 	fmt.Println("The Weeknd is the GOAT bro")
+
+// user := User{
+// 	name: "theweeknd",
+// 	age:  36,
+// }
+
+// fmt.Println(user.name)
+
+// user.setage(67)
+// fmt.Println(user.age)
+
+// user, err := validNewUser("theweeknd", 36)
+
+// if err == nil {
+// 	fmt.Println(user.name)
+// } else {
+// 	fmt.Println(err.Error())
+// }
+
+// 	celcius := Celcius(30)
+
+// 	fmt.Println(celcius.toCelcius())
+
+// }
+
 // ===================================== DAY 8 ===================================================
 
 // type Song struct {
