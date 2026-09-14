@@ -679,6 +679,14 @@ triansh -> 45
 //     Age = 18
 // }
 
+
+// can be printed like this using a function
+// let printuser user = 
+//     printfn "%s" user.Name
+//     printfn "%d" user.Age
+
+// printuser user1
+
 // let user2 = {
 //     Name = "User 2"
 //     Age = 20
@@ -715,3 +723,188 @@ triansh -> 45
 // anonymous records
 // let point = {| X= 10; Y= 20 |}
 // printfn "%d %d" point.X point.Y
+
+
+// type User = {
+//     Name: string
+//     Age: int
+// }
+
+// let user1 = {
+//     Name = "User 1"
+//     Age = 17
+// }
+
+// let alterage user = 
+//     {user with 
+//         Age = user.Age + 1}
+
+// let checkage user = 
+//     if user.Age >= 18 then 
+//         true
+//     else 
+//         false
+
+// // let newuser = alterage user1
+// // printfn "%d" newuser.Age
+
+// let canapplydl = checkage user1
+// printfn "%b" canapplydl
+
+// ========================================== DAY 9 ============================================================
+
+// type User = 
+//     {
+//         name: string
+//         email: string
+//     }
+
+//     member this.fact = 
+//         this.name + " has the email " + this.email
+
+//     member this.greet(name: string) =
+//         printfn "Hello %s" name
+    
+// // let greetperson name = 
+// //     "Hello " + name
+
+// // printfn "%s" (greetperson "kaushal")
+
+// let user = {
+//     name = "theweeknd"
+//     email = "kaushal21gs@gmail.com"
+// }
+
+// // printfn "%s" user.fact
+
+// printfn "%s" (user.greet "the weeknd")
+
+// type User = 
+//     {
+//         name: string
+//         age: int
+//     }
+
+//     member this.fact =
+//         this.name + " age is " + (string this.age)
+    
+//     static member truth = 
+//         "humans are mortal"
+
+// let user = {
+//     name = "The Weeknd"
+//     age = 36
+// }
+
+// printfn "%s" User.truth
+
+// implementing a constructor to the type
+
+// type User = 
+//     {
+//         name: string
+//         age: int
+//     }
+
+//     static member create(name: string, age: int) =
+//         {
+//             name = name
+//             age = age
+//         }
+    
+// let newuser = {
+//     user with 
+//         name = "the weeknd"
+//         age = 36
+// }
+
+// printfn "%s" newuser.name
+// printfn "%d" newuser.age
+
+// type User with 
+//     member this.fact =
+//         this.name + " age is " + (string this.age)
+
+// let user = User.create ("kaushal", 19)
+
+
+// printfn "%s" user.fact
+
+// type User = 
+//     {
+//         FirstName: string
+//         LastName: string
+//         Age: int
+//     }
+
+// // here is the module
+// module UserFunctions = 
+    
+//     let fullName user = 
+//         user.FirstName + " " + user.LastName
+    
+//     let isAdult user = 
+//         user.Age >= 18
+
+// let user = {
+//     FirstName= "the"
+//     LastName = "weeknd"
+//     Age= 36
+// }
+
+// printfn "%b" (UserFunctions.isAdult user)
+// printfn "%s" (UserFunctions.fullName user)
+
+// we can also use pipelines
+// let fullname = 
+//     user
+//     |> UserFunctions.fullName
+
+// printfn "%s" fullname
+
+// type User(name: string, age: int) = 
+//     member val Name = name
+//     member val Age = age
+
+// let user = User("kaushal", 19)
+
+// printfn "%s" user.Name
+// printfn "%d" user.Age
+
+// immutable objects
+
+// type User(name: string, age: int) =
+//     member val name = name with get, set
+//     member val age = age with get, set
+
+// let user = User("theweeknd", 36)
+
+// user.age <- 136
+
+// printfn "%d" user.age
+
+// type User with 
+//     member this.isadult = 
+//         this.age >= 18
+
+//     member this.fromgreetings(name: string) = 
+//         "Hello " + this.name + " from " + name
+    
+// printfn "%b" user.isadult
+// printfn "%s" (user.fromgreetings("kaushal"))
+
+// type User = 
+//     {
+//         name: string
+//         age: int
+//     }
+
+//     member this.create(name: string, age: int) = 
+//         User(
+//             .WithNname(name)
+//             .Withage(age)
+//         )
+        
+// let user = User.create("kaushal", 19)
+
+// printfn "%d" user.age
