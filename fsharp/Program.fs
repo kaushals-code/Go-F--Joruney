@@ -1105,3 +1105,136 @@ triansh -> 45
 //         printfn $"{x} is an minor"
 
 // res user
+
+// ================================================== DAY 12 ==============================================
+
+// let findUser id = 
+//     if id = 1 then 
+//         Some "kaushal"
+//     else 
+//         None
+
+// let result = findUser 1
+
+// match result with 
+// | Some x -> 
+//     printfn "%s is the name" x
+// | None -> 
+//     printfn "There is not value returned"
+
+// option is a discriminated union
+
+// let age = Some 30
+// printfn "%d" age // this will not work actually
+
+// it should be done like this but not the above way cause it is a Option<int>
+// match age with 
+// | Some x -> printfn "%d" x
+// | None -> printfn "The type is not recognized"
+
+// I don't know why is this not working actually
+// let mutable age = Some 19
+
+// age 
+// |> Option.map (fun x -> x + 5)
+
+// printfn "%d" age
+
+// let name = Some "kaushal"
+// let upper = 
+//     name 
+//     |> Option.map (fun s -> s.ToUpper())
+
+// match upper with 
+// | Some x -> printfn "%s" x
+// | None -> ()
+
+// let something = 4 // it can be string also here
+
+// let parseInt s = 
+//     matchc System.Int32.TryParse(s) with 
+//     | true, value -> Some value
+//     | false
+
+// let result = parseInt "8"
+
+// printfn "%d" result
+
+// let age = Some 18
+
+// let checkAge x = 
+//     if x >= 18 then 
+//         Some x
+//     else 
+//         None
+
+// let checkAge x =
+//     match x with 
+//     | Some x -> 
+//         (fun x -> 
+//             if x >= 18 then 
+//                 true
+//             else 
+//                 false)
+//     | None -> ()
+
+// let result x = 
+//     age 
+//     |> Option.bind checkAge
+
+// printfn "%A" result
+
+// this is very importat actually
+// let value (a : 'b )= a
+
+// value "kaushal"
+// value 19
+
+// printfn "%A" value
+
+// type Result<'T, 'E> =
+//     | Ok of 'T
+//     | Error of 'E
+
+// let result1 = Ok 20
+// let result2 = Error "Go out MF"
+
+// let validate res = 
+//     match res with
+//     | Ok x -> printfn "%A" x
+//     | Error x -> printfn $"{x}"
+
+// validate result2
+
+// this should work perfectly but there is some problem itseems in the above commented codes
+// type Result<'T, 'E> =
+//     | Ok of 'T
+//     | Error of 'E
+
+// let result1 = Ok 10
+
+// let result2 = 
+//     result1
+//     |> Result.map (fun x -> x * 2)
+
+// let validateRes res = 
+//     match res with 
+//     | Ok x -> printfn "%A" x
+//     | Error x -> printfn "%A" x
+
+// validateRes result2
+
+// let divide a b = 
+//     if b = 0 then 
+//         failwith "Can't divide with 0"
+    
+//     a / b
+
+// // printfn $"{divide 4 0}"
+
+// try 
+//     let res = System.Int32.Parse("abc")
+//     printfn "%d" res
+// with 
+// | :? System.FormatException -> 
+//     printfn "Invalid Parsing"
