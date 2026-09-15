@@ -1005,3 +1005,103 @@ triansh -> 45
 // let speaker = dog :> ISpeaker
 
 // printfn "%s" (speaker.Speak())
+
+// ============================================ DAY 11 =============================================
+
+// let num = 2
+
+// let res num =
+//     match num with 
+//     | 1 -> printfn "Num is one"
+//     | 2 -> printfn "Num is two"
+//     | 3 -> printfn "Num is three"
+//     | 4 -> printfn "Num is four"
+//     | _ -> printfn "Num is not recognized"
+
+// res num
+
+// let person = ("kaushal", 19)
+
+// // here is the special case, actually very useful
+// // wildcard = _
+// let usematch person = 
+//     match person with 
+//     | (x, 19) -> printfn "%s age is 19" x
+//     | ("kaushal", x) -> printfn "kaushal age is %d" x
+//     | _ -> ()
+
+// usematch person
+
+// let age = 27
+
+// let checkAge age = 
+//     match age with 
+//     | x when x >= 18 -> 
+//         printfn "He/She is an adult"
+//     | x -> printfn "He/She is a minor"
+
+// checkAge age
+
+// let person = ("theweeknd", 36) 
+
+// let res person = 
+//     match person with 
+//     | (y, x) when x >= 18 -> 
+//         printfn "%s is a Major" y
+//     | (y, _) -> printfn "%s is a Minor" y
+
+// res person 
+
+// let weekday = "wedneday"
+
+// let whichday day = 
+//     match day with 
+//     | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" -> 
+//         printfn "This is a week day"
+//     | "saturday" | "sunday" -> 
+//         printfn "Hurray! its the weeekend"
+//     | _ -> printfn "The Day is not recognized as valid"
+
+// whichday weekday
+
+// let number = [1; 3]
+
+// let res nums = 
+//     match nums with 
+//     | [] -> printfn "The string is empty"
+//     | [_] -> printfn "The string is having only one element"
+//     | [_; _] -> printfn "The string is having only two elements"
+//     | _ -> printfn "The string is having multiple elements"
+
+// res number
+
+// let numbers = [1; 2; 3; 4]
+
+// let rec res nums = 
+//     match nums with 
+//     | [] -> 
+//         0
+//     | head :: tail -> 
+//         head + res tail
+//     | _ -> ()
+
+// res numbers
+
+// type User = {
+//     name: string
+//     age: int
+// }
+
+// let user = {
+//     name= "kaushal"
+//     age= 20
+// }
+
+// let res u = 
+//     match u with 
+//     | {name=x; age=y} when y >= 18 -> 
+//         printfn $"{x} is an adult"
+//     | {name=x; age=_} -> 
+//         printfn $"{x} is an minor"
+
+// res user

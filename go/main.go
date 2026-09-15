@@ -1,5 +1,83 @@
 package main
 
+// =================================== DAY 12 ======================================================
+
+// func divide(a, b int) (float64, error) {
+// 	if b == 0 {
+// 		return 0, errors.New("Cannot be divided with 0")
+// 	} else {
+// 		return float64(a / b), nil
+// 	}
+
+// }
+
+// Sentinal Errors
+// errors are predifined so that its not required to see the text contining in it always
+// var UserNotFound error = errors.New("User not found MF")
+
+// func combineErrors(err error) error {
+// 	return fmt.Errorf("The Error is => %w", err)
+// }
+
+// func main() {
+// 	fmt.Println("The Weeknd is the GOAT Bro")
+
+// Map revision small part
+// mapp := map[string]int{}
+
+// mapp["kaushal"] = 19
+// mapp["ritvik"] = 20
+
+// // fmt.Println(mapp["kaushal"])
+
+// // val, err := mapp["sushanth"]
+// val := "kaushal"
+
+// err := true
+
+// if err {
+// 	fmt.Println("There is no such record")
+// } else {
+// 	fmt.Println(val)
+// }
+
+// so Error is a built-in interface which contains methods like Erro() string
+/*
+	type Error interface {
+		Error() string
+	}
+*/
+
+// err := errors.New("invalid age")
+
+// // fmt.Print(err)
+
+// if err != nil {
+// 	fmt.Println("Error: ", err)
+// }
+
+// res, err := divide(9, 3)
+
+// fmt.Println(res, err)
+
+// Never underestimate errors, either handle it or wrap it
+
+// UserNotFound := errors.New("User not found MF")
+
+// err := combineErrors(UserNotFound)
+
+// fmt.Println(err.Error())
+
+// 	UserNotFound := errors.New("User is not verified") // this is an error
+
+// 	err := fmt.Errorf(
+// 		"database query failed => %w",
+// 		UserNotFound,
+// 	)
+
+// 	fmt.Println(errors.Is(err, UserNotFound))
+// }
+
 // =================================== DAY 11 ======================================================
 
 // type Shape interface {
