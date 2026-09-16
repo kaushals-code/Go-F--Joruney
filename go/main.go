@@ -4,6 +4,21 @@ import (
 	"fmt"
 )
 
+// now we are performing modular programming in go
+
+// These contains all the next Days
+
+func main() {
+	fmt.Println("The Weeknd is the GOAT bro")
+
+	// student := student.Student{
+	// 	Name:  "kaushal",
+	// 	Marks: 89,
+	// }
+
+	// fmt.Println(student.Name)
+}
+
 // =================================== DAY 13 ======================================================
 
 // var UserNotFound = errors.New("user is not really found")
@@ -27,48 +42,48 @@ import (
 // 	return fmt.Sprintf("%s: %s", a.Field, a.Value)
 // }
 
-func main() {
-	fmt.Println("The Weeknd is the GOAT bro")
+// func main() {
+// 	fmt.Println("The Weeknd is the GOAT bro")
 
-	// err := errors.New("This is a new error bro")
+// err := errors.New("This is a new error bro")
 
-	// toPrint := fmt.Errorf("Error: %w", err)
+// toPrint := fmt.Errorf("Error: %w", err)
 
-	// // fmt.Println(toPrint)
-	// fmt.Println(errors.Is(toPrint, err))
+// // fmt.Println(toPrint)
+// fmt.Println(errors.Is(toPrint, err))
 
-	// user := getUser()
+// user := getUser()
 
-	// if errors.Is(user, UserNotFound) {
-	// 	fmt.Println("The error is present")
-	// } // thi give correct answer
+// if errors.Is(user, UserNotFound) {
+// 	fmt.Println("The error is present")
+// } // thi give correct answer
 
-	// fmt.Println(user)
-	// fmt.Println(errors.Unwrap(user))
+// fmt.Println(user)
+// fmt.Println(errors.Unwrap(user))
 
-	// err := AgeCheckError{
-	// 	Field:   "age",
-	// 	Value:   "20",
-	// 	Message: "must be atleast 20",
-	// }
+// err := AgeCheckError{
+// 	Field:   "age",
+// 	Value:   "20",
+// 	Message: "must be atleast 20",
+// }
 
-	// fmt.Println(fmt.Errorf(err.Error()))
+// fmt.Println(fmt.Errorf(err.Error()))
 
-	defer func() {
-		fmt.Println("Defer runs")
+// 	defer func() {
+// 		fmt.Println("Defer runs")
 
-		if r := recover(); r != nil {
-			fmt.Println("recovered: ", r)
-		}
-	}()
+// 		if r := recover(); r != nil {
+// 			fmt.Println("recovered: ", r)
+// 		}
+// 	}()
 
-	fmt.Println("before")
+// 	fmt.Println("before")
 
-	panic("boom")
+// 	panic("boom")
 
-	fmt.Println("after")
+// 	fmt.Println("after")
 
-}
+// }
 
 // =================================== DAY 12 ======================================================
 
