@@ -1,5 +1,75 @@
 package main
 
+import (
+	"fmt"
+)
+
+// =================================== DAY 13 ======================================================
+
+// var UserNotFound = errors.New("user is not really found")
+
+// func findUser() error {
+// 	return fmt.Errorf("The Error is %w", UserNotFound)
+// }
+
+// func getUser() error {
+// 	return fmt.Errorf("The Error is %w", findUser())
+// }
+
+// // custom error
+// type AgeCheckError struct {
+// 	Field   string
+// 	Value   string
+// 	Message string
+// }
+
+// func (a AgeCheckError) Error() string {
+// 	return fmt.Sprintf("%s: %s", a.Field, a.Value)
+// }
+
+func main() {
+	fmt.Println("The Weeknd is the GOAT bro")
+
+	// err := errors.New("This is a new error bro")
+
+	// toPrint := fmt.Errorf("Error: %w", err)
+
+	// // fmt.Println(toPrint)
+	// fmt.Println(errors.Is(toPrint, err))
+
+	// user := getUser()
+
+	// if errors.Is(user, UserNotFound) {
+	// 	fmt.Println("The error is present")
+	// } // thi give correct answer
+
+	// fmt.Println(user)
+	// fmt.Println(errors.Unwrap(user))
+
+	// err := AgeCheckError{
+	// 	Field:   "age",
+	// 	Value:   "20",
+	// 	Message: "must be atleast 20",
+	// }
+
+	// fmt.Println(fmt.Errorf(err.Error()))
+
+	defer func() {
+		fmt.Println("Defer runs")
+
+		if r := recover(); r != nil {
+			fmt.Println("recovered: ", r)
+		}
+	}()
+
+	fmt.Println("before")
+
+	panic("boom")
+
+	fmt.Println("after")
+
+}
+
 // =================================== DAY 12 ======================================================
 
 // func divide(a, b int) (float64, error) {

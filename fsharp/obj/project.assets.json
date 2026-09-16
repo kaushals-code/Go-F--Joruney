@@ -55,6 +55,22 @@
             "locale": "zh-Hant"
           }
         }
+      },
+      "FsToolkit.ErrorHandling/5.2.0": {
+        "type": "package",
+        "dependencies": {
+          "FSharp.Core": "6.0.4"
+        },
+        "compile": {
+          "lib/netstandard2.1/FsToolkit.ErrorHandling.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/FsToolkit.ErrorHandling.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
       }
     }
   },
@@ -100,11 +116,80 @@
         "lib/netstandard2.1/zh-Hans/FSharp.Core.resources.dll",
         "lib/netstandard2.1/zh-Hant/FSharp.Core.resources.dll"
       ]
+    },
+    "FsToolkit.ErrorHandling/5.2.0": {
+      "sha512": "Y7NfN1gDJ5eOANmi8/aEjGHTWrJOYyqwmgtdA3BIZggd0Ph0IIsbewtgNaLkDYFGgkKw6mGlk0iw4RZ2ZRKZhA==",
+      "type": "package",
+      "path": "fstoolkit.errorhandling/5.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fable/Array.fs",
+        "fable/AssemblyInfo.fs",
+        "fable/Async.fs",
+        "fable/AsyncOption.fs",
+        "fable/AsyncOptionCE.fs",
+        "fable/AsyncOptionOp.fs",
+        "fable/AsyncResult.fs",
+        "fable/AsyncResultCE.fs",
+        "fable/AsyncResultOp.fs",
+        "fable/AsyncResultOption.fs",
+        "fable/AsyncResultOptionCE.fs",
+        "fable/AsyncResultOptionOp.fs",
+        "fable/AsyncValidation.fs",
+        "fable/AsyncValidationCE.fs",
+        "fable/AsyncValidationOp.fs",
+        "fable/FsToolkit.ErrorHandling.fsproj",
+        "fable/List.fs",
+        "fable/Nullness.fs",
+        "fable/Option.fs",
+        "fable/OptionCE.fs",
+        "fable/OptionOp.fs",
+        "fable/ParallelAsyncResult.fs",
+        "fable/ParallelAsyncResultCE.fs",
+        "fable/ParallelAsyncValidation.fs",
+        "fable/ParallelAsyncValidationCE.fs",
+        "fable/Result.fs",
+        "fable/ResultCE.fs",
+        "fable/ResultOp.fs",
+        "fable/ResultOption.fs",
+        "fable/ResultOptionCE.fs",
+        "fable/ResultOptionOp.fs",
+        "fable/Seq.fs",
+        "fable/Validation.fs",
+        "fable/ValidationCE.fs",
+        "fable/ValidationOp.fs",
+        "fable/ValueOption.fs",
+        "fable/ValueTaskValueOption.fs",
+        "fable/ValueTaskValueOptionCE.fs",
+        "fable/ValueTaskValueOptionOp.fs",
+        "fable/obj/Debug/netstandard2.1/.NETStandard,Version=v2.1.AssemblyAttributes.fs",
+        "fable/obj/Debug/netstandard2.1/FsToolkit.ErrorHandling.AssemblyInfo.fs",
+        "fable/obj/Release/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.fs",
+        "fable/obj/Release/net9.0/FsToolkit.ErrorHandling.AssemblyInfo.fs",
+        "fable/obj/Release/netstandard2.0/.NETStandard,Version=v2.0.AssemblyAttributes.fs",
+        "fable/obj/Release/netstandard2.0/FsToolkit.ErrorHandling.AssemblyInfo.fs",
+        "fable/obj/Release/netstandard2.1/.NETStandard,Version=v2.1.AssemblyAttributes.fs",
+        "fable/obj/Release/netstandard2.1/FsToolkit.ErrorHandling.AssemblyInfo.fs",
+        "fstoolkit.errorhandling.5.2.0.nupkg.sha512",
+        "fstoolkit.errorhandling.nuspec",
+        "lib/net9.0/FsToolkit.ErrorHandling.dll",
+        "lib/net9.0/FsToolkit.ErrorHandling.pdb",
+        "lib/net9.0/FsToolkit.ErrorHandling.xml",
+        "lib/netstandard2.0/FsToolkit.ErrorHandling.dll",
+        "lib/netstandard2.0/FsToolkit.ErrorHandling.pdb",
+        "lib/netstandard2.0/FsToolkit.ErrorHandling.xml",
+        "lib/netstandard2.1/FsToolkit.ErrorHandling.dll",
+        "lib/netstandard2.1/FsToolkit.ErrorHandling.pdb",
+        "lib/netstandard2.1/FsToolkit.ErrorHandling.xml"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "FSharp.Core >= 8.0.403"
+      "FSharp.Core >= 8.0.403",
+      "FsToolkit.ErrorHandling >= 5.2.0"
     ]
   },
   "packageFolders": {
@@ -149,6 +234,11 @@
             "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
             "target": "Package",
             "version": "[8.0.403, )",
+            "generatePathProperty": true
+          },
+          "FsToolkit.ErrorHandling": {
+            "target": "Package",
+            "version": "[5.2.0, )",
             "generatePathProperty": true
           }
         },

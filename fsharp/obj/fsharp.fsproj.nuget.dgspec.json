@@ -44,6 +44,11 @@
               "target": "Package",
               "version": "[8.0.403, )",
               "generatePathProperty": true
+            },
+            "FsToolkit.ErrorHandling": {
+              "target": "Package",
+              "version": "[5.2.0, )",
+              "generatePathProperty": true
             }
           },
           "imports": [

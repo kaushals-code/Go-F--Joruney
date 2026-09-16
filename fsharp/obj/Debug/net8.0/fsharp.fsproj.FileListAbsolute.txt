@@ -28,3 +28,4 @@
 /home/the-weeknd/Desk/go-fsharp-journey/fsharp/obj/Debug/net8.0/fsharp.pdb
 /home/the-weeknd/Desk/go-fsharp-journey/fsharp/obj/Debug/net8.0/fsharp.genruntimeconfig.cache
 /home/the-weeknd/Desk/go-fsharp-journey/fsharp/obj/Debug/net8.0/ref/fsharp.dll
+/home/the-weeknd/Desk/go-fsharp-journey/fsharp/bin/Debug/net8.0/FsToolkit.ErrorHandling.dll

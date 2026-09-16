@@ -1238,3 +1238,176 @@ triansh -> 45
 // with 
 // | :? System.FormatException -> 
 //     printfn "Invalid Parsing"
+
+// ========================================== DAY 13 =========================================================
+
+// let Result<'T, 'E> = 
+//     | Ok of 'T
+//     | Error of 'E
+
+// // let res1 = Ok "kaushal age is 19"
+// // let res2 = Error "User is a minor"
+
+// // user contains age number
+// let validateAge user = {
+//     if user >= 18 then
+//         Ok $"kaushal age is {user}"
+//     else 
+//         Error "User is a minor"
+// }
+
+// let parseName name = 
+//     if name = "" then
+//         Error "Name is empty"
+//     else 
+//         Ok name
+    
+// let checkNameLength name = 
+//     if (String.length name) <= 3 then 
+//         Error "Name cannot be that short"
+//     else 
+//         Ok name
+
+// let validateName name = 
+//     parseName name
+//     |> Result.bind checkNameLength
+
+// let res = validateName "Kaushal Singh Thakur"
+
+// match res with 
+// | Ok x -> printfn "%s" x
+// | Error x -> printfn "%s" x
+
+// let Result<'T, 'E> = 
+//     | Ok of 'T
+//     | Error of 'E
+
+// open System
+
+// let validateName (name: string) =
+//     if String.IsNullOrWhiteSpace name then
+//         Error "Name is required"
+//     else
+//         Ok name
+
+// let validateEmail (email: string) =
+//     if not (String.IsNullOrWhiteSpace email) && email.Contains("@") then
+//         Ok email
+//     else
+//         Error "Invalid email"
+
+// let validateNameAndEmail name email =
+//     validateName name
+//     |> Result.bind (fun name ->
+//         validateEmail email
+//         |> Result.map (fun email -> name, email))
+
+// let res = validateNameAndEmail "kaushal" "kaushal21gs@gmail.com"
+
+// match res with 
+// | Ok (x, y) -> printfn "%s %s" x y
+// | Error x -> printfn "%s" x
+
+// let res : Result<int, string> = 
+//     Ok 20
+//     |> Result.mapError (fun e -> 2 * e)
+
+// // printfn "%d" res
+// match res with
+// | Ok x -> printfn "%d" x
+// | Error x -> printfn "%s" x
+
+// open System.FsToolkit.ErrorHandling
+
+// let step1 x = 
+//     Ok (x + 1)
+
+// let step2 x = 
+//     Ok (2 * x)
+
+// let step3 x = 
+//     Ok (x - 1)
+
+// let pipeline x = 
+//     result {
+//         let! a = step1 x
+//         let! b = step2 a
+//         let! c = step3 b
+//         return c
+//     }
+
+// let res = pipeline 10
+
+// match res with 
+// | Ok x -> printfn "%d" x
+// | Error x -> printfn "%s" x
+
+// // dotnet add package FsToolkit.ErrorHandling
+// open FsToolkit.ErrorHandling
+
+// let step1 x = Ok (x + 1)
+// let step2 x = 
+//     if x < 1 then 
+//         Ok (2 * x)
+//     else
+//         Error "WTF are you doning mf"
+// let step3 x = Ok (x - 1)
+
+// let pipeline x = 
+//     result {
+//         let! a = step1 x
+//         let! b = step2 a
+//         let! c = step3 b
+//         return c
+//     }
+//     |> Result.mapError (fun e -> sprintf "The Error is : %s" e)
+
+// let res = pipeline 5
+
+// match res with 
+// | Ok x -> printfn "%d" x
+// | Error x -> printfn "%s" x
+
+// open FsToolkit.ErrorHandling
+
+// let getUser user = 
+//     Ok ()
+
+// let register user =
+//     result {
+//         do! getUser user
+//         return "User Registered"
+//     }
+
+// let res = register 10
+
+// // printfn "%A" res
+// match res with 
+// | Ok x -> printfn "%s" x
+// | Error x -> printfn "%s" x
+
+// try
+//     // failwith "Something went wrong" // or we can also use
+//     raise (System.Exception("Got out MF"))
+// with 
+// | ex -> 
+//     printfn "The error is: %s" ex.Message
+
+// custom exception creating
+// exception GetOutMF of int
+
+// try 
+//     raise(GetOutMF(67))
+// with 
+// | ex -> 
+//     printfn "The error is: %s" ex.Message
+
+// let getUser user = 
+//     Ok $"Sample {user}"
+
+// let validateUser user = 
+//     getUser user    
+
+// match validateUser with 
+// | Ok x -> printfn "%s" x
+// | Error x -> printfn "%s" x
