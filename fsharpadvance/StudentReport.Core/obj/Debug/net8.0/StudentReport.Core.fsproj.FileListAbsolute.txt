@@ -1,0 +1,14 @@
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/bin/Debug/net8.0/StudentReport.Core.deps.json
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/bin/Debug/net8.0/StudentReport.Core.dll
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/bin/Debug/net8.0/StudentReport.Core.pdb
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/bin/Debug/net8.0/StudentReport.Core.xml
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/obj/Debug/net8.0/StudentReport.Core.fsproj.AssemblyReference.cache
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/obj/Debug/net8.0/StudentReport.Core.AssemblyInfoInputs.cache
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/obj/Debug/net8.0/StudentReport.Core.AssemblyInfo.fs
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/obj/Debug/net8.0/StudentReport.Core.fsproj.CoreCompileInputs.cache
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/obj/Debug/net8.0/StudentReport.Core.sourcelink.json
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/obj/Debug/net8.0/StudentReport.Core.dll
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/obj/Debug/net8.0/refint/StudentReport.Core.dll
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/obj/Debug/net8.0/StudentReport.Core.xml
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/obj/Debug/net8.0/StudentReport.Core.pdb
+/home/the-weeknd/Desk/go-fsharp-journey/fsharpadvance/StudentReport.Core/obj/Debug/net8.0/ref/StudentReport.Core.dll
