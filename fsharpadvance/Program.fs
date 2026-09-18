@@ -1,5 +1,5 @@
 ﻿// For more information see https://aka.ms/fsharp-console-apps
-printfn "The Weeknd is the GOAT"
+// printfn "The Weeknd is the GOAT"
 
 // open Calculator
 // open StudentReport // it will import all the moduels present in that namepace
@@ -66,5 +66,162 @@ printfn "The Weeknd is the GOAT"
 //     |> push 10
 //     |> push 20
 //     |> push 30
+
+// let firstAsync =
+//     async {
+//         printfn "The Weeknd is the GOAT BRO"
+//         return 67
+//     }
+
+// let res = Async.RunSynchronously firstAsync
+// printfn "%d" res
+
+// let printData n = 
+//     async {
+//         printfn "Go fuck yourself %d" n
+//     }
+
+// let func n = 
+//     async {
+//         // let! x = async {return 10}
+//         // do! printData
+//         // return x
+
+//         // do! Async.Sleep 1000
+
+//         // return! (printData n)
+
+//         // do! (printData n)
+
+//         printfn "%d is starting" 
+//         Async.Sleep 1000
+//         printfn "%d is ending"
+//     }
+
+// // let res1 = Async.RunSynchronously (func 2)
+// // let res = Async.RunSynchronously (func 1)
+
+// // printfn "%s" res
+// // printfn "%s" res1
+
+// let jobs = 
+//     [1..5]
+//     |> List.map func
+
+// let all = 
+//     jobs
+//     |> Async.Parallel
+
+// let res = 
+//     all
+//     |> Async.RunSynchronously
+
+// printfn "%A" res
+
+// best example for async operations on F#
+
+// let func n = 
+//     async {
+//         printfn "%d is starting\n" n 
+//         do! Async.Sleep 1000
+//         printfn "%d is ending\n" n
+//     }
+
+// let jobs = 
+//     [1..5]
+//     |> List.map func
+
+// let all = 
+//     jobs
+//     |> Async.Parallel
+
+// let res = 
+//     all
+//     |> Async.RunSynchronously
+
+// printfn "%A" res
+
+// tasks now
+
+open System.Threading.Tasks
+
+// let work = 
+//     task {
+//         return 67
+//     }
+
+// let res = Async.RunSynchronously work
+// let res = work
+
+// printfn "%d" res
+
+// let work id = 
+//     task {
+//         do! Task.Delay 1000
+
+//         return id
+//     }
+
+// let tasks = 
+//     [1..5]
+//     |> List.map work
+
+// let all = 
+//     Task.WhenAll tasks
+
+// let result = all    
+
+// printfn "%A" result
+
+
+
+
+
+// open System.Net.Http
+
+// let client = new HttpClient()
+
+// let api (clt: HttpClient) (url: string) = 
+//     async {
+//         let! resp = 
+//             clt.GetAsync(url)
+//             |> Async.AwaitTask
+//         return resp
+//     }
+
+// let res = Async.RunSynchronously (api client "https://v2.jokeapi.dev/joke/Any?format=json")
+// printfn "%A" res
+
+
+
+
+
+
+
+
+
+open System.Net.Http
+
+let client = new HttpClient()
+
+let resp (cli: HttpClient) (url: string) = 
+    async {
+        let! res = 
+            cli.GetAsync(url)
+            |> Async.AwaitTask
+        
+        return res
+    }
+
+let rest = 
+    Async.RunSynchronously (resp client "https://v2.jokeapi.dev/joke/Any?format=json")
+
+printfn "%A" rest
+
+
+
+
+
+
 
 

@@ -10,7 +10,7 @@ open System.Reflection
 [<assembly: System.Reflection.AssemblyCompanyAttribute("StudentReport.Core")>]
 [<assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")>]
 [<assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")>]
-[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a389d217befce5673ba4fe532ed1074eb5543ca")>]
+[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f94a3b823c93f2589de924a3e5b19c0b005d95c7")>]
 [<assembly: System.Reflection.AssemblyProductAttribute("StudentReport.Core")>]
 [<assembly: System.Reflection.AssemblyTitleAttribute("StudentReport.Core")>]
 [<assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")>]
