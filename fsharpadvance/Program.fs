@@ -143,7 +143,7 @@
 
 // tasks now
 
-open System.Threading.Tasks
+// open System.Threading.Tasks
 
 // let work = 
 //     task {
@@ -173,10 +173,6 @@ open System.Threading.Tasks
 
 // printfn "%A" result
 
-
-
-
-
 // open System.Net.Http
 
 // let client = new HttpClient()
@@ -192,36 +188,20 @@ open System.Threading.Tasks
 // let res = Async.RunSynchronously (api client "https://v2.jokeapi.dev/joke/Any?format=json")
 // printfn "%A" res
 
+// open System.Net.Http
 
+// let client = new HttpClient()
 
-
-
-
-
-
-
-open System.Net.Http
-
-let client = new HttpClient()
-
-let resp (cli: HttpClient) (url: string) = 
-    async {
-        let! res = 
-            cli.GetAsync(url)
-            |> Async.AwaitTask
+// let resp (cli: HttpClient) (url: string) = 
+//     async {
+//         let! res = 
+//             cli.GetAsync(url)
+//             |> Async.AwaitTask
         
-        return res
-    }
+//         return res
+//     }
 
-let rest = 
-    Async.RunSynchronously (resp client "https://v2.jokeapi.dev/joke/Any?format=json")
+// let rest = 
+//     Async.RunSynchronously (resp client "https://v2.jokeapi.dev/joke/Any?format=json")
 
-printfn "%A" rest
-
-
-
-
-
-
-
-
+// printfn "%A" rest

@@ -1,5 +1,142 @@
 package main
 
+// ====================================== DAY 18 =============================================================
+
+// func greet(name string) {
+// 	fmt.Println("Hello", name)
+
+// 	resp, err := http.Get("https://v2.jokeapi.dev/joke/Any?format=json")
+
+// 	if err != nil {
+// 		fmt.Printf("The api call didn't go well: %v", err.Error())
+// 	}
+
+// 	fmt.Println(resp.StatusCode)
+// }
+
+// func main() {
+// 	fmt.Println("The Weeknd is the GOAT")
+
+// 	var wg sync.WaitGroup
+
+// 	wg.Add(1)
+
+// 	go func() {
+// 		defer wg.Done()
+// 		greet("theweeknd")
+// 	}()
+
+// 	wg.Wait()
+// }
+
+// chan<- int is only for receving
+// <- chan int is only for sending from channel
+// <- chan is both for sending and receving
+
+// func produce(ch chan<- int) {
+// 	// defer close(ch)
+// 	ch <- 10
+// 	ch <- 20
+// 	ch <- 30
+// 	ch <- 40
+// 	ch <- 50
+// 	ch <- 60
+// }
+
+// func transform(ch <-chan int, chanel chan<- int) {
+// 	for i := range ch {
+// 		chanel <- i * 2
+// 	}
+// 	close(chanel)
+// }
+
+// func main() {
+// fmt.Println("The Weeknd is the GOAT bro")
+
+// // making a new channel
+// ch := make(chan int)
+
+// go func() {
+// 	ch <- 67
+// }()
+
+// x := <-ch
+
+// fmt.Println(x)
+
+// ch := make(chan int, 3)
+
+// ch <- 5
+// ch <- 6
+
+// fmt.Println(<-ch)
+// fmt.Println(<-ch) // 5 6
+// fmt.Println(<-ch) // returns a message warning a deadlock
+
+// ch := make(chan int)
+
+// // go produce(ch)
+
+// var wg sync.WaitGroup
+
+// wg.Add(1)
+// go func() {
+// 	defer wg.Done()
+// 	produce(ch)
+// 	close(ch) // it important to avoid error and to protect the data integrity without editing it
+// // we can keep this close(ch) in the produce() also
+// }()
+
+// fmt.Println(<-ch)
+// fmt.Println(<-ch)
+// fmt.Println(<-ch)
+
+// defer close(ch)
+
+// for i := range 4 {
+
+// 	val, ok := <-ch
+
+// 	if !ok {
+// 		fmt.Errorf("The Channel is closed bro")
+// 	}
+// 	fmt.Println(val)
+
+// 	fmt.Printf("%d\b", i)
+// }
+
+// this works good than the above one actually
+// for {
+// 	val, ok := <-ch
+
+// 	if !ok {
+// 		break
+// 	}
+
+// 	fmt.Println(val)
+// }
+
+// wg.Wait()
+
+// channel + goroutine = pipeline
+
+// 	ch := make(chan int)
+
+// 	go func() {
+// 		defer close(ch)
+// 		produce(ch)
+// 	}()
+
+// 	out := make(chan int)
+// 	go func() {
+// 		transform(ch, out)
+// 	}()
+
+// 	for i := range out {
+// 		fmt.Println(i)
+// 	}
+// }
+
 // ====================================== DAY 17 ====================================================
 
 // func theTruth() {
