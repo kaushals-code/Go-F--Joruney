@@ -205,3 +205,20 @@
 //     Async.RunSynchronously (resp client "https://v2.jokeapi.dev/joke/Any?format=json")
 
 // printfn "%A" rest
+
+// ======================================== DAY 18 ==========================================================
+
+// I didn't understand how to use the tasks from the .Net (System.Threading.Tasks)
+
+// open System.Threading.Tasks
+
+// let testTask = 
+//     task{
+//         return "hello weeknd"
+//     }
+
+// printfn "%s" testTask.Result // hello weeknd
+
+// skippin the channel section bro, cause I am bored of this not-so-useful channel
+
+
