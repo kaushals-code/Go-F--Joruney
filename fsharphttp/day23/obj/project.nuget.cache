@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "EpWU2mckmDE=",
+  "success": true,
+  "projectFilePath": "/home/the-weeknd/Desk/go-fsharp-journey/fsharphttp/day23/day23.fsproj",
+  "expectedPackageFiles": [
+    "/home/the-weeknd/.nuget/packages/fsharp.core/8.0.403/fsharp.core.8.0.403.nupkg.sha512",
+    "/home/the-weeknd/.nuget/packages/fsharp.systemtextjson/1.3.13/fsharp.systemtextjson.1.3.13.nupkg.sha512",
+    "/home/the-weeknd/.nuget/packages/giraffe/8.3.0/giraffe.8.3.0.nupkg.sha512",
+    "/home/the-weeknd/.nuget/packages/giraffe.viewengine/1.4.0/giraffe.viewengine.1.4.0.nupkg.sha512",
+    "/home/the-weeknd/.nuget/packages/microsoft.io.recyclablememorystream/3.0.1/microsoft.io.recyclablememorystream.3.0.1.nupkg.sha512",
+    "/home/the-weeknd/.nuget/packages/system.text.json/8.0.6/system.text.json.8.0.6.nupkg.sha512"
+  ],
+  "logs": []
+}

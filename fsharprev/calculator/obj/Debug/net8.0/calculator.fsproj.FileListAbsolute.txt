@@ -1,0 +1,14 @@
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/bin/Debug/net8.0/calculator.deps.json
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/bin/Debug/net8.0/calculator.dll
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/bin/Debug/net8.0/calculator.pdb
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/bin/Debug/net8.0/calculator.xml
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/obj/Debug/net8.0/calculator.fsproj.AssemblyReference.cache
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/obj/Debug/net8.0/calculator.AssemblyInfoInputs.cache
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/obj/Debug/net8.0/calculator.AssemblyInfo.fs
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/obj/Debug/net8.0/calculator.fsproj.CoreCompileInputs.cache
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/obj/Debug/net8.0/calculator.sourcelink.json
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/obj/Debug/net8.0/calculator.dll
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/obj/Debug/net8.0/refint/calculator.dll
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/obj/Debug/net8.0/calculator.xml
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/obj/Debug/net8.0/calculator.pdb
+/home/the-weeknd/Desk/go-fsharp-journey/fsharprev/calculator/obj/Debug/net8.0/ref/calculator.dll
