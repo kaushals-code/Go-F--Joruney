@@ -1,0 +1,172 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "day23/1.0.0": {
+        "dependencies": {
+          "FSharp.Core": "8.0.403",
+          "Giraffe": "8.3.0"
+        },
+        "runtime": {
+          "day23.dll": {}
+        }
+      },
+      "FSharp.Core/8.0.403": {
+        "runtime": {
+          "lib/netstandard2.1/FSharp.Core.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.4.324.52602"
+          }
+        },
+        "resources": {
+          "lib/netstandard2.1/cs/FSharp.Core.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard2.1/de/FSharp.Core.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard2.1/es/FSharp.Core.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard2.1/fr/FSharp.Core.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard2.1/it/FSharp.Core.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard2.1/ja/FSharp.Core.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard2.1/ko/FSharp.Core.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard2.1/pl/FSharp.Core.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard2.1/pt-BR/FSharp.Core.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard2.1/ru/FSharp.Core.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard2.1/tr/FSharp.Core.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard2.1/zh-Hans/FSharp.Core.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard2.1/zh-Hant/FSharp.Core.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
+      "FSharp.SystemTextJson/1.3.13": {
+        "dependencies": {
+          "FSharp.Core": "8.0.403",
+          "System.Text.Json": "8.0.6"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FSharp.SystemTextJson.dll": {
+            "assemblyVersion": "1.3.0.0",
+            "fileVersion": "1.3.13.11246"
+          }
+        }
+      },
+      "Giraffe/8.3.0": {
+        "dependencies": {
+          "FSharp.Core": "8.0.403",
+          "FSharp.SystemTextJson": "1.3.13",
+          "Giraffe.ViewEngine": "1.4.0",
+          "Microsoft.IO.RecyclableMemoryStream": "3.0.1",
+          "System.Text.Json": "8.0.6"
+        },
+        "runtime": {
+          "lib/net8.0/Giraffe.dll": {
+            "assemblyVersion": "8.3.0.0",
+            "fileVersion": "8.3.0.0"
+          }
+        }
+      },
+      "Giraffe.ViewEngine/1.4.0": {
+        "dependencies": {
+          "FSharp.Core": "8.0.403"
+        },
+        "runtime": {
+          "lib/net5.0/Giraffe.ViewEngine.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.IO.RecyclableMemoryStream/3.0.1": {
+        "runtime": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+            "assemblyVersion": "3.0.1.0",
+            "fileVersion": "3.0.1.0"
+          }
+        }
+      },
+      "System.Text.Json/8.0.6": {
+        "runtime": {
+          "lib/net8.0/System.Text.Json.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1825.31117"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "day23/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FSharp.Core/8.0.403": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ldNIn4IksrJL/X3rF4R/y9pa3RmwkcGYQ3xFMdbJj8dJ9Q49J735m6sMy3MbCK9gj3YoCsxlyFeExCiNDy3gHQ==",
+      "path": "fsharp.core/8.0.403",
+      "hashPath": "fsharp.core.8.0.403.nupkg.sha512"
+    },
+    "FSharp.SystemTextJson/1.3.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-znp8odpdkVGKVX0AvbhiXdmeMi0KJ+A4AyAQWSkfAEAe4Z4clRE+rVhrLnAGrFD1VEIUX2lsQ4o84ywpWZUSGw==",
+      "path": "fsharp.systemtextjson/1.3.13",
+      "hashPath": "fsharp.systemtextjson.1.3.13.nupkg.sha512"
+    },
+    "Giraffe/8.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/ljc4Ob4QyaEFajqHukMBVfmB+/HTpyzRyucPU1CmoYt874oz6YIXeAyJEP5Z3ikX/XnkVhxaCAVQ+u7x+sjzQ==",
+      "path": "giraffe/8.3.0",
+      "hashPath": "giraffe.8.3.0.nupkg.sha512"
+    },
+    "Giraffe.ViewEngine/1.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gWzlp8KGDLaPHMm/xGzfLT1e9wZaJhBKhEuMsPRBSn7wAMkSgMcaqJlWl8mFGCcOOx0r9UyDJvCJJQyljYmo+g==",
+      "path": "giraffe.viewengine/1.4.0",
+      "hashPath": "giraffe.viewengine.1.4.0.nupkg.sha512"
+    },
+    "Microsoft.IO.RecyclableMemoryStream/3.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-s/s20YTVY9r9TPfTrN5g8zPF1YhwxyqO6PxUkrYTGI2B+OGPe9AdajWZrLhFqXIvqIW23fnUE4+ztrUWNU1+9g==",
+      "path": "microsoft.io.recyclablememorystream/3.0.1",
+      "hashPath": "microsoft.io.recyclablememorystream.3.0.1.nupkg.sha512"
+    },
+    "System.Text.Json/8.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BvSpVBsVN9b+Y+wONbvJOHd1HjXQf33+XiC28ZMOwRsYb42mz3Q8YHnpTSwpwJLqYCMqM+0UUVC3V+pi25XfkQ==",
+      "path": "system.text.json/8.0.6",
+      "hashPath": "system.text.json.8.0.6.nupkg.sha512"
+    }
+  }
+}

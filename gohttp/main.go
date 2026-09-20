@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -10,11 +11,33 @@ import (
 
 // the todo project
 
+type Todo struct {
+	todo string
+}
+
+var TodoList = []Todo{}
+
 func main() {
 	c := chi.NewRouter()
 
 	// the business logic here
+	// add
+	// get all
 
+	c.Post("/add", func(w http.ResponseWriter, r *http.Request) {
+		todo := r.URL.Query().Get("todo")
+		newtodo := Todo{
+			todo: todo,
+		}
+		TodoList = append(TodoList, newtodo)
+		fmt.Fprintln(w, "Todo added successfully")
+	})
+
+	c.Get("/alltodo", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintln(w, TodoList)
+	})
+
+	fmt.Println("The server is running on the port 8080")
 	http.ListenAndServe(":8080", c)
 }
 
