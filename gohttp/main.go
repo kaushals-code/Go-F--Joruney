@@ -1,45 +1,193 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
-
-	"github.com/go-chi/chi/v5"
 )
+
+// =============================================== DAY 24 ======================================================
+
+// this the normal to struct
+//
+//	type Todo struct {
+//		Id        int
+//		Title     string
+//		Completed bool
+//	}
+//
+// but for the api json responses, we use this
+type Todo struct {
+	Id        int    `json:"id"`
+	Title     string `json:"title"`
+	Completed bool   `json:"completed"`
+}
+
+type User struct {
+	Id    int    `json:"id"`
+	Name  string `json:"name"`
+	Email string `json:"email,omitempty`
+}
+
+type Person struct {
+	Id     int    `json:"id"`
+	Name   string `json:"name"`
+	Email  string `json:"email,omitempty"`
+	Gender byte   `json:"-"`
+}
+
+// good practice for encoding
+// func writeJSON(w http.ResponseWriter, status int, data any) {
+// 	w.Header().Set("Content-Type", "application/json")
+// 	w.WriteHeader(status)
+
+// 	err := json.NewEncoder(w).Encode(data)
+
+// 	if err != nil {
+// 		return
+// 	}
+// }
+
+type ErrorResponse struct {
+	Error string `json:"error"`
+}
+
+func writeJSON(w http.ResponseWriter, status int, data any) {
+	w.Header().Set("Content-Type", "application.json")
+	w.WriteHeader(status)
+	err := json.NewEncoder(w).Encode(data)
+	if err != nil {
+		return
+	}
+}
+
+// in the func main() writeJSON(w, http.BadRequest, ErrorResponse {Error: "Get out bro"})
+
+func main() {
+
+	// the main methods given by encoding/json are
+	// Marshall(), Unmarshall, NewEncoder(), NewDecoder()
+
+	// example todo
+	todo := Todo{
+		Id:        1,
+		Title:     "Listen to The Weeknd",
+		Completed: true,
+	}
+
+	// 1. Marshall()
+	data, err := json.Marshal(todo) // returns []byte
+	if err != nil {
+		fmt.Println("Error while encoding todo")
+		return
+	}
+	fmt.Println(string(data))
+	fmt.Println(data) // byte data as a list
+
+	// 2. Unmarshall()
+	var deTodo Todo
+	er := json.Unmarshal(data, &deTodo)
+	if er != nil {
+		fmt.Println("Error while decoding")
+		return
+	}
+	fmt.Println(deTodo)
+	fmt.Println("Id: ", deTodo.Id)
+	fmt.Println("Title: ", deTodo.Title)
+	fmt.Println("Completed: ", deTodo.Completed)
+
+	mux := http.NewServeMux()
+	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
+		var todo Todo
+		decoder := json.NewDecoder(r.Body) // this is the intialization of the decoder
+		decoder.DisallowUnknownFields()    // will produce an error when unknown fields are sent
+		err := decoder.Decode(&todo)       // this is the process of decoding
+		if err != nil {
+			fmt.Println()
+		}
+	})
+	mux.HandleFunc("POST /", func(w http.ResponseWriter, r *http.Request) {
+		encoder := json.NewEncoder(w)
+		todo := Todo{
+			Id:        2,
+			Title:     "Grind The Weeknd",
+			Completed: true,
+		}
+		encoder.Encode(todo)
+
+	})
+
+	// post endpoint
+	mux.HandleFunc("POST /add", func(w http.ResponseWriter, r *http.Request) {
+		// json to struct (object)
+		var todo Todo
+		dc := json.NewDecoder(r.Body)
+		dc.DisallowUnknownFields()
+		err := dc.Decode(&todo)
+		if err != nil {
+			http.Error(w, "Invalid data", http.StatusBadRequest)
+			return
+		}
+		fmt.Println("Success Decoding")
+	})
+
+	fmt.Println("The Server is running on http://localhost:8080")
+	http.ListenAndServe(":8080", mux)
+
+	// fmt.Println("Hello World")
+
+	// mux := http.NewServeMux()
+
+	// mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	// 	fmt.Fprintln(w, "Hello The Weeknd")
+	// })
+
+	// fmt.Println("The server is running on the porg 8080")
+	// http.ListenAndServe(":8080", mux)
+
+	// c := chi.NewRouter()
+
+	// c.Get("/", func(w http.ResponseWriter, r *http.Request) {
+	// 	fmt.Fprintln(w, "Hello The Weeknd")
+	// })
+
+	// fmt.Println("The server is running on the porg 8080")
+	// http.ListenAndServe(":8080", c)
+}
 
 // =============================================== DAY 23 ======================================================
 
 // the todo project
 
-type Todo struct {
-	todo string
-}
+// type Todo struct {
+// 	todo string
+// }
 
-var TodoList = []Todo{}
+// var TodoList = []Todo{}
 
-func main() {
-	c := chi.NewRouter()
+// func main() {
+// 	c := chi.NewRouter()
 
-	// the business logic here
-	// add
-	// get all
+// the business logic here
+// add
+// get all
 
-	c.Post("/add", func(w http.ResponseWriter, r *http.Request) {
-		todo := r.URL.Query().Get("todo")
-		newtodo := Todo{
-			todo: todo,
-		}
-		TodoList = append(TodoList, newtodo)
-		fmt.Fprintln(w, "Todo added successfully")
-	})
+// 	c.Post("/add", func(w http.ResponseWriter, r *http.Request) {
+// 		todo := r.URL.Query().Get("todo")
+// 		newtodo := Todo{
+// 			todo: todo,
+// 		}
+// 		TodoList = append(TodoList, newtodo)
+// 		fmt.Fprintln(w, "Todo added successfully")
+// 	})
 
-	c.Get("/alltodo", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, TodoList)
-	})
+// 	c.Get("/alltodo", func(w http.ResponseWriter, r *http.Request) {
+// 		fmt.Fprintln(w, TodoList)
+// 	})
 
-	fmt.Println("The server is running on the port 8080")
-	http.ListenAndServe(":8080", c)
-}
+// 	fmt.Println("The server is running on the port 8080")
+// 	http.ListenAndServe(":8080", c)
+// }
 
 // func fun() {
 // 	fmt.Println("This is executed")
