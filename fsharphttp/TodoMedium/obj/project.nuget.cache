@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "n+t3Avnjk7U=",
+  "success": true,
+  "projectFilePath": "/home/the-weeknd/Desk/go-fsharp-journey/fsharphttp/TodoMedium/TodoMedium.fsproj",
+  "expectedPackageFiles": [
+    "/home/the-weeknd/.nuget/packages/fsharp.core/8.0.403/fsharp.core.8.0.403.nupkg.sha512"
+  ],
+  "logs": []
+}
