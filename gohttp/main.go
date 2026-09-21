@@ -26,7 +26,7 @@ type Todo struct {
 type User struct {
 	Id    int    `json:"id"`
 	Name  string `json:"name"`
-	Email string `json:"email,omitempty`
+	Email string `json:"email,omitempty"`
 }
 
 type Person struct {
