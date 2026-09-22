@@ -1,23 +1,64 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 )
+
+type User struct {
+	Name string `json:"name"`
+	Age  int    `json:"age"`
+}
+
+func main() {
+	fmt.Println("The Weeknd is the GOAT bro")
+
+	// c := chi.NewRouter()
+
+	// c.Get("/", func(w http.ResponseWriter, r *http.Request) {
+	// 	// var body map[string]interface{}
+	// 	// req := json.NewDecoder(r.Body).Decode(&body)
+	// 	fmt.Fprintln(w, "Hello The Weeknd")
+	// })
+
+	// user := User{
+	// 	Name: "kaushal",
+	// 	Age:  19,
+	// }
+	// ec := json.NewEncoder(user)
+	ec, err := json.Marshal("Sale")
+	if err != nil {
+		fmt.Println("There is error while encoding")
+		return
+	}
+	fmt.Println(ec) // now that I have the encoded user, now I need to decode it actually
+
+	var u string
+	e := json.Unmarshal(ec, &u)
+	if e != nil {
+		fmt.Println("There is error while decoding")
+		return
+	}
+	fmt.Println(u)
+
+	// fmt.Println("The server is running on 8080")
+	// // http.ListenAndServe(":8080", c)
+}
 
 // now we are performing modular programming in go
 
 // These contains all the next Days
 
-func main() {
-	fmt.Println("The Weeknd is the GOAT bro")
+// func main() {
+// 	fmt.Println("The Weeknd is the GOAT bro")
 
-	// student := student.Student{
-	// 	Name:  "kaushal",
-	// 	Marks: 89,
-	// }
+// 	// student := student.Student{
+// 	// 	Name:  "kaushal",
+// 	// 	Marks: 89,
+// 	// }
 
-	// fmt.Println(student.Name)
-}
+// 	// fmt.Println(student.Name)
+// }
 
 // =================================== DAY 13 ======================================================
 

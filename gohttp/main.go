@@ -4,7 +4,92 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 )
+
+// =============================================== DAY 25 ======================================================
+
+// accumulated error
+// returning a slice/array of all the malformed values to as the response for the given request
+
+type ValidationErrorResponse struct {
+	Error   string `json:"error"`
+	Message string `json:"message"`
+	Fields  string `json:"fields"`
+}
+
+// func writeJSON(w http.ResponseWriter, status int, data any) {
+// 	w.Header().Set("Content-Type", "application/json")
+// 	w.WriteHeader(status)
+// 	err := json.NewEncoder(w).Encode(data)
+// 	if err != nil {
+// 		return
+// 	}
+// }
+
+func writeJSON(w http.ResponseWriter, status int, data any) {
+	w.Header().Set("Content-type", "application/json")
+	w.WriteHeader(status)
+	err := json.NewEncoder(w).Encode(data)
+	if err != nil {
+		fmt.Fprintln(w, "There is some error with the data")
+		return
+	}
+}
+
+func main() {
+	// fmt.Print("The Weeknd is the GOAT")
+	mux := http.NewServeMux()
+
+	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintln(w, "The Weeknd is the GOAT")
+	})
+
+	// retrive a url query parameter query = r.URL.Query()
+	// query.Get("id")
+	mux.HandleFunc("GET /user", func(w http.ResponseWriter, r *http.Request) {
+		query := r.URL.Query()
+		id := query.Get("id")
+		res, err := strconv.Atoi(id)
+		if err != nil {
+			fmt.Fprintln(w, "The given id not valid", http.StatusBadRequest)
+			return
+		}
+
+		// check if a given query parameter is present in the URL or not?
+		name := query.Get("name")
+		if name == "" {
+			fmt.Fprintln(w, "The name is not provided", http.StatusBadRequest)
+		}
+		fmt.Fprintln(w, "The id is mentioned as", res)
+	})
+
+	// getting the path value
+	mux.HandleFunc("GET /user/{id}", func(w http.ResponseWriter, r *http.Request) {
+		id := r.PathValue("id")
+		fmt.Fprintln(w, "The given id is", id)
+	})
+
+	mux.HandleFunc("POST /user", func(w http.ResponseWriter, r *http.Request) {
+		// get the query parameters
+		// id := r.PathValue("id")
+		// fmt.Fprintln(w, "The given id is", id)
+		dec := json.NewDecoder(r.Body)
+		dec.DisallowUnknownFields()
+		
+		/*
+			type User use = {
+				name string
+				age int
+			}
+		*/
+		
+		// err := dec.Decode(user)
+	})
+
+	fmt.Println("The server is running on 8080")
+	http.ListenAndServe(":8080", mux)
+}
 
 // =============================================== DAY 24 ======================================================
 
@@ -17,24 +102,24 @@ import (
 //	}
 //
 // but for the api json responses, we use this
-type Todo struct {
-	Id        int    `json:"id"`
-	Title     string `json:"title"`
-	Completed bool   `json:"completed"`
-}
+// type Todo struct {
+// 	Id        int    `json:"id"`
+// 	Title     string `json:"title"`
+// 	Completed bool   `json:"completed"`
+// }
 
-type User struct {
-	Id    int    `json:"id"`
-	Name  string `json:"name"`
-	Email string `json:"email,omitempty"`
-}
+// type User struct {
+// 	Id    int    `json:"id"`
+// 	Name  string `json:"name"`
+// 	Email string `json:"email,omitempty"`
+// }
 
-type Person struct {
-	Id     int    `json:"id"`
-	Name   string `json:"name"`
-	Email  string `json:"email,omitempty"`
-	Gender byte   `json:"-"`
-}
+// type Person struct {
+// 	Id     int    `json:"id"`
+// 	Name   string `json:"name"`
+// 	Email  string `json:"email,omitempty"`
+// 	Gender byte   `json:"-"`
+// }
 
 // good practice for encoding
 // func writeJSON(w http.ResponseWriter, status int, data any) {
@@ -48,112 +133,112 @@ type Person struct {
 // 	}
 // }
 
-type ErrorResponse struct {
-	Error string `json:"error"`
-}
+// type ErrorResponse struct {
+// 	Error string `json:"error"`
+// }
 
-func writeJSON(w http.ResponseWriter, status int, data any) {
-	w.Header().Set("Content-Type", "application.json")
-	w.WriteHeader(status)
-	err := json.NewEncoder(w).Encode(data)
-	if err != nil {
-		return
-	}
-}
+// func writeJSON(w http.ResponseWriter, status int, data any) {
+// 	w.Header().Set("Content-Type", "application.json")
+// 	w.WriteHeader(status)
+// 	err := json.NewEncoder(w).Encode(data)
+// 	if err != nil {
+// 		return
+// 	}
+// }
 
 // in the func main() writeJSON(w, http.BadRequest, ErrorResponse {Error: "Get out bro"})
 
-func main() {
+// func main() {
 
-	// the main methods given by encoding/json are
-	// Marshall(), Unmarshall, NewEncoder(), NewDecoder()
+// the main methods given by encoding/json are
+// Marshall(), Unmarshall, NewEncoder(), NewDecoder()
 
-	// example todo
-	todo := Todo{
-		Id:        1,
-		Title:     "Listen to The Weeknd",
-		Completed: true,
-	}
+// example todo
+// todo := Todo{
+// 	Id:        1,
+// 	Title:     "Listen to The Weeknd",
+// 	Completed: true,
+// }
 
-	// 1. Marshall()
-	data, err := json.Marshal(todo) // returns []byte
-	if err != nil {
-		fmt.Println("Error while encoding todo")
-		return
-	}
-	fmt.Println(string(data))
-	fmt.Println(data) // byte data as a list
+// // 1. Marshall()
+// data, err := json.Marshal(todo) // returns []byte
+// if err != nil {
+// 	fmt.Println("Error while encoding todo")
+// 	return
+// }
+// fmt.Println(string(data))
+// fmt.Println(data) // byte data as a list
 
-	// 2. Unmarshall()
-	var deTodo Todo
-	er := json.Unmarshal(data, &deTodo)
-	if er != nil {
-		fmt.Println("Error while decoding")
-		return
-	}
-	fmt.Println(deTodo)
-	fmt.Println("Id: ", deTodo.Id)
-	fmt.Println("Title: ", deTodo.Title)
-	fmt.Println("Completed: ", deTodo.Completed)
+// // 2. Unmarshall()
+// var deTodo Todo
+// er := json.Unmarshal(data, &deTodo)
+// if er != nil {
+// 	fmt.Println("Error while decoding")
+// 	return
+// }
+// fmt.Println(deTodo)
+// fmt.Println("Id: ", deTodo.Id)
+// fmt.Println("Title: ", deTodo.Title)
+// fmt.Println("Completed: ", deTodo.Completed)
 
-	mux := http.NewServeMux()
-	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
-		var todo Todo
-		decoder := json.NewDecoder(r.Body) // this is the intialization of the decoder
-		decoder.DisallowUnknownFields()    // will produce an error when unknown fields are sent
-		err := decoder.Decode(&todo)       // this is the process of decoding
-		if err != nil {
-			fmt.Println()
-		}
-	})
-	mux.HandleFunc("POST /", func(w http.ResponseWriter, r *http.Request) {
-		encoder := json.NewEncoder(w)
-		todo := Todo{
-			Id:        2,
-			Title:     "Grind The Weeknd",
-			Completed: true,
-		}
-		encoder.Encode(todo)
+// mux := http.NewServeMux()
+// mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
+// 	var todo Todo
+// 	decoder := json.NewDecoder(r.Body) // this is the intialization of the decoder
+// 	decoder.DisallowUnknownFields()    // will produce an error when unknown fields are sent
+// 	err := decoder.Decode(&todo)       // this is the process of decoding
+// 	if err != nil {
+// 		fmt.Println()
+// 	}
+// })
+// mux.HandleFunc("POST /", func(w http.ResponseWriter, r *http.Request) {
+// 	encoder := json.NewEncoder(w)
+// 	todo := Todo{
+// 		Id:        2,
+// 		Title:     "Grind The Weeknd",
+// 		Completed: true,
+// 	}
+// 	encoder.Encode(todo)
 
-	})
+// })
 
-	// post endpoint
-	mux.HandleFunc("POST /add", func(w http.ResponseWriter, r *http.Request) {
-		// json to struct (object)
-		var todo Todo
-		dc := json.NewDecoder(r.Body)
-		dc.DisallowUnknownFields()
-		err := dc.Decode(&todo)
-		if err != nil {
-			http.Error(w, "Invalid data", http.StatusBadRequest)
-			return
-		}
-		fmt.Println("Success Decoding")
-	})
+// // post endpoint
+// mux.HandleFunc("POST /add", func(w http.ResponseWriter, r *http.Request) {
+// 	// json to struct (object)
+// 	var todo Todo
+// 	dc := json.NewDecoder(r.Body)
+// 	dc.DisallowUnknownFields()
+// 	err := dc.Decode(&todo)
+// 	if err != nil {
+// 		http.Error(w, "Invalid data", http.StatusBadRequest)
+// 		return
+// 	}
+// 	fmt.Println("Success Decoding")
+// })
 
-	fmt.Println("The Server is running on http://localhost:8080")
-	http.ListenAndServe(":8080", mux)
+// fmt.Println("The Server is running on http://localhost:8080")
+// http.ListenAndServe(":8080", mux)
 
-	// fmt.Println("Hello World")
+// fmt.Println("Hello World")
 
-	// mux := http.NewServeMux()
+// mux := http.NewServeMux()
 
-	// mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-	// 	fmt.Fprintln(w, "Hello The Weeknd")
-	// })
+// mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+// 	fmt.Fprintln(w, "Hello The Weeknd")
+// })
 
-	// fmt.Println("The server is running on the porg 8080")
-	// http.ListenAndServe(":8080", mux)
+// fmt.Println("The server is running on the porg 8080")
+// http.ListenAndServe(":8080", mux)
 
-	// c := chi.NewRouter()
+// c := chi.NewRouter()
 
-	// c.Get("/", func(w http.ResponseWriter, r *http.Request) {
-	// 	fmt.Fprintln(w, "Hello The Weeknd")
-	// })
+// c.Get("/", func(w http.ResponseWriter, r *http.Request) {
+// 	fmt.Fprintln(w, "Hello The Weeknd")
+// })
 
-	// fmt.Println("The server is running on the porg 8080")
-	// http.ListenAndServe(":8080", c)
-}
+// fmt.Println("The server is running on the porg 8080")
+// http.ListenAndServe(":8080", c)
+// }
 
 // =============================================== DAY 23 ======================================================
 
