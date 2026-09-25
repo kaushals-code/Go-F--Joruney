@@ -1,37 +1,168 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"net/http"
-
-	"github.com/go-chi/chi/v5"
+	"time"
 )
 
 // =============================================== DAY 26 ======================================================
 
+func generateRequestId(ctx context.Context) string {
+	return fmt.Sprintf("%d", time.Now().UnixNano())
+}
+
+type statusWriter struct {
+	http.ResponseWriter
+	status int
+}
+
+func (w *statusWriter) WriteHeader(status int) {
+	w.status = status
+	w.ResponseWriter.WriteHeader(status)
+}
+
+func (w *statusWriter) Write(data []byte) (int, error) {
+	if w.status == 0 {
+		w.status = http.StatusOK
+	}
+	return w.ResponseWriter.Write(data)
+}
+
 func loggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println("before")
-		next.ServeHTTP(w, r)
-		fmt.Println("after")
+		start := time.Now()
+		sw := &statusWriter{
+			ResponseWriter: w,
+		}
+
+		next.ServeHTTP(sw, r)
+
+		requestId := generateRequestId(r.Context())
+
+		fmt.Printf(
+			"request_id=%s method=%s path=%s status=%d duration=%s\n",
+			requestId,
+			r.Method,
+			r.URL.Path,
+			sw.status,
+			time.Since(start),
+		)
 	})
 }
 
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Hello World")
-}
-
 func main() {
-	c := chi.NewRouter()
-	// c.Get("/", helloHandler)
 
-	c.Get("/hello", helloHandler)
-
-	handler := loggingMiddleware(c)
-
-	fmt.Println("The server running on port 8080")
-	http.ListenAndServe(":8080", handler)
 }
+
+// func generateRequestId() string {
+// 	return fmt.Sprintf("%d", time.Now().UnixNano())
+// }
+
+// type contextKey string
+
+// func requestIDMiddleware(next http.Handler) http.Handler {
+// 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+// 		requestId := generateRequestId() // string
+// 		const ctxKey contextKey = "requestId"
+// 		r = r.WithContext(
+// 			context.WithValue(
+// 				r.Context(),
+// 				ctxKey,
+// 				requestId,
+// 			),
+// 		)
+// 		w.Header().Set("X-Request-ID", requestId)
+// 		next.ServeHTTP(w, r)
+// 	})
+// }
+
+// func helloHandler(w http.ResponseWriter, r *http.Request) {
+// 	requestId, ok := r.Context().Value("requestId").(string)
+// 	if !ok {
+// 		http.Error(w, "Missing Request ID", http.StatusInternalServerError)
+// 	}
+// 	fmt.Println("request Id := ", requestId)
+// 	fmt.Fprintln(w, "Hello")
+// }
+
+// func main() {
+// 	c := chi.NewRouter()
+
+// 	c.Get("/hello", helloHandler)
+
+// 	middle := requestIDMiddleware(c)
+// 	http.ListenAndServe(":8080", middle)
+// }
+
+// func middleware(next http.Handler) http.Handler {
+// 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+// 		fmt.Fprintln(w, "The Error is notingn")
+// 		next.ServeHTTP(w, r)
+// 	})
+// }
+
+// func chain(handler http.Handler, middlewares ...func(http.Handler) http.Handler) http.Handler {
+// 	for i := len(middlewares) - 1; i >= 0; i-- {
+// 		handler = middlewares[i](handler)
+// 	}
+// 	return handler
+// }
+
+// func add2(next http.Handler) http.Handler {
+// 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+// 		fmt.Fprintln(w, "Add 2 before next")
+// 		next.ServeHTTP(w, r)
+// 		fmt.Fprintln(w, "after adding 2")
+// 	})
+// }
+
+// func mult10(next http.Handler) http.Handler {
+// 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+// 		fmt.Fprintln(w, "Multiply 10 before next")
+// 		next.ServeHTTP(w, r)
+// 		fmt.Fprintln(w, "after multiplying 10")
+// 	})
+// }
+
+// func handler(w http.ResponseWriter, r *http.Request) {
+// 	fmt.Fprintln(w, "10")
+// }
+
+// func main() {
+// 	c := chi.NewRouter()
+
+// 	c.Get("/", handler)
+
+// 	handler := chain(c, add2, mult10)
+
+// 	fmt.Println("The Server is runnion in 8080")
+// 	http.ListenAndServe(":8080", handler)
+// }
+
+// func loggingMiddleware(next http.Handler) http.Handler {
+// 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+// 		w.Header().Set("X-Powered-by:", "Go")
+// 		next.ServeHTTP(w, r)
+// 	})
+// }
+
+// func helloHandler(w http.ResponseWriter, r *http.Request) {
+// 	fmt.Fprintln(w, "Hello World")
+// }
+
+// func main() {
+// 	c := chi.NewRouter()
+// 	// c.Get("/", helloHandler)
+
+// 	c.Get("/hello", helloHandler)
+
+// 	handler := loggingMiddleware(c)
+
+// 	fmt.Println("The server running on port 8080")
+// 	http.ListenAndServe(":8080", handler)
+// }
 
 // =============================================== DAY 25 ======================================================
 
