@@ -1,22 +1,48 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
-	"strconv"
+
+	"github.com/go-chi/chi/v5"
 )
+
+// =============================================== DAY 26 ======================================================
+
+func loggingMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Println("before")
+		next.ServeHTTP(w, r)
+		fmt.Println("after")
+	})
+}
+
+func helloHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Hello World")
+}
+
+func main() {
+	c := chi.NewRouter()
+	// c.Get("/", helloHandler)
+
+	c.Get("/hello", helloHandler)
+
+	handler := loggingMiddleware(c)
+
+	fmt.Println("The server running on port 8080")
+	http.ListenAndServe(":8080", handler)
+}
 
 // =============================================== DAY 25 ======================================================
 
 // accumulated error
 // returning a slice/array of all the malformed values to as the response for the given request
 
-type ValidationErrorResponse struct {
-	Error   string `json:"error"`
-	Message string `json:"message"`
-	Fields  string `json:"fields"`
-}
+// type ValidationErrorResponse struct {
+// 	Error   string `json:"error"`
+// 	Message string `json:"message"`
+// 	Fields  string `json:"fields"`
+// }
 
 // func writeJSON(w http.ResponseWriter, status int, data any) {
 // 	w.Header().Set("Content-Type", "application/json")
@@ -27,69 +53,69 @@ type ValidationErrorResponse struct {
 // 	}
 // }
 
-func writeJSON(w http.ResponseWriter, status int, data any) {
-	w.Header().Set("Content-type", "application/json")
-	w.WriteHeader(status)
-	err := json.NewEncoder(w).Encode(data)
-	if err != nil {
-		fmt.Fprintln(w, "There is some error with the data")
-		return
-	}
-}
+// func writeJSON(w http.ResponseWriter, status int, data any) {
+// 	w.Header().Set("Content-type", "application/json")
+// 	w.WriteHeader(status)
+// 	err := json.NewEncoder(w).Encode(data)
+// 	if err != nil {
+// 		fmt.Fprintln(w, "There is some error with the data")
+// 		return
+// 	}
+// }
 
-func main() {
-	// fmt.Print("The Weeknd is the GOAT")
-	mux := http.NewServeMux()
+// func main() {
+// 	// fmt.Print("The Weeknd is the GOAT")
+// 	mux := http.NewServeMux()
 
-	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "The Weeknd is the GOAT")
-	})
+// 	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
+// 		fmt.Fprintln(w, "The Weeknd is the GOAT")
+// 	})
 
-	// retrive a url query parameter query = r.URL.Query()
-	// query.Get("id")
-	mux.HandleFunc("GET /user", func(w http.ResponseWriter, r *http.Request) {
-		query := r.URL.Query()
-		id := query.Get("id")
-		res, err := strconv.Atoi(id)
-		if err != nil {
-			fmt.Fprintln(w, "The given id not valid", http.StatusBadRequest)
-			return
-		}
+// 	// retrive a url query parameter query = r.URL.Query()
+// 	// query.Get("id")
+// 	mux.HandleFunc("GET /user", func(w http.ResponseWriter, r *http.Request) {
+// 		query := r.URL.Query()
+// 		id := query.Get("id")
+// 		res, err := strconv.Atoi(id)
+// 		if err != nil {
+// 			fmt.Fprintln(w, "The given id not valid", http.StatusBadRequest)
+// 			return
+// 		}
 
-		// check if a given query parameter is present in the URL or not?
-		name := query.Get("name")
-		if name == "" {
-			fmt.Fprintln(w, "The name is not provided", http.StatusBadRequest)
-		}
-		fmt.Fprintln(w, "The id is mentioned as", res)
-	})
+// 		// check if a given query parameter is present in the URL or not?
+// 		name := query.Get("name")
+// 		if name == "" {
+// 			fmt.Fprintln(w, "The name is not provided", http.StatusBadRequest)
+// 		}
+// 		fmt.Fprintln(w, "The id is mentioned as", res)
+// 	})
 
-	// getting the path value
-	mux.HandleFunc("GET /user/{id}", func(w http.ResponseWriter, r *http.Request) {
-		id := r.PathValue("id")
-		fmt.Fprintln(w, "The given id is", id)
-	})
+// 	// getting the path value
+// 	mux.HandleFunc("GET /user/{id}", func(w http.ResponseWriter, r *http.Request) {
+// 		id := r.PathValue("id")
+// 		fmt.Fprintln(w, "The given id is", id)
+// 	})
 
-	mux.HandleFunc("POST /user", func(w http.ResponseWriter, r *http.Request) {
-		// get the query parameters
-		// id := r.PathValue("id")
-		// fmt.Fprintln(w, "The given id is", id)
-		dec := json.NewDecoder(r.Body)
-		dec.DisallowUnknownFields()
-		
-		/*
-			type User use = {
-				name string
-				age int
-			}
-		*/
-		
-		// err := dec.Decode(user)
-	})
+// 	mux.HandleFunc("POST /user", func(w http.ResponseWriter, r *http.Request) {
+// 		// get the query parameters
+// 		// id := r.PathValue("id")
+// 		// fmt.Fprintln(w, "The given id is", id)
+// 		dec := json.NewDecoder(r.Body)
+// 		dec.DisallowUnknownFields()
 
-	fmt.Println("The server is running on 8080")
-	http.ListenAndServe(":8080", mux)
-}
+// 		/*
+// 			type User use = {
+// 				name string
+// 				age int
+// 			}
+// 		*/
+
+// 		// err := dec.Decode(user)
+// 	})
+
+// 	fmt.Println("The server is running on 8080")
+// 	http.ListenAndServe(":8080", mux)
+// }
 
 // =============================================== DAY 24 ======================================================
 
