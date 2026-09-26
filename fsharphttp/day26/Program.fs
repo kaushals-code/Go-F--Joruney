@@ -21,27 +21,27 @@ let main args =
     //     )
     // ) |> ignore
 
-    app.Use(
-        Func<HttpContext, RequestDelegate, Threading.Tasks.Task>(
-            fun context next -> 
-                task {
-                    printfn "Request 1 received"
-                    do! next.Invoke(context)
-                    printfn "Request 1 completed"
-                }
-        )
-    ) |> ignore
+    // app.Use(
+    //     Func<HttpContext, RequestDelegate, Threading.Tasks.Task>(
+    //         fun context next -> 
+    //             task {
+    //                 printfn "Request 1 received"
+    //                 do! next.Invoke(context)
+    //                 printfn "Request 1 completed"
+    //             }
+    //     )
+    // ) |> ignore
 
-    app.Use(
-        Func<HttpContext, RequestDelegate, Threading.Tasks.Task>(
-            fun context next -> 
-                task {
-                    printfn "Request 2 received"
-                    do! next.Invoke(context)
-                    printfn "Request 2 completed"
-                }
-        )
-    ) |> ignore
+    // app.Use(
+    //     Func<HttpContext, RequestDelegate, Threading.Tasks.Task>(
+    //         fun context next -> 
+    //             task {
+    //                 printfn "Request 2 received"
+    //                 do! next.Invoke(context)
+    //                 printfn "Request 2 completed"
+    //             }
+    //     )
+    // ) |> ignore
 
     // middleware to stop the http request
     // app.Use(
@@ -56,35 +56,44 @@ let main args =
     // ) |> ignore
 
     // use Items of the HttpContext to store some information
-    app.Use(
-        Func<HttpContext, RequestDelegate, Threading.Tasks.Task>(
-            fun context next -> 
-                task {
-                    context.Items["RequestID"] <- "abc123"
-                    do! next.Invoke(context)
-                }
-        )
-    ) |> ignore
+    // app.Use(
+    //     Func<HttpContext, RequestDelegate, Threading.Tasks.Task>(
+    //         fun context next -> 
+    //             task {
+    //                 context.Items["RequestID"] <- "abc123"
+    //                 do! next.Invoke(context)
+    //             }
+    //     )
+    // ) |> ignore
 
-    app.Use(
-        Func<HttpContext, RequestDelegate, Threading.Tasks.Task>(
-            fun context next -> 
-                task{
-                    // let request = context.Items["RequestID"] :?> string
-                    // printfn "%s is the RequestID" request
-                    // do! next.Invoke(context)
+    // app.Use(
+    //     Func<HttpContext, RequestDelegate, Threading.Tasks.Task>(
+    //         fun context next -> 
+    //             task{
+    //                 // let request = context.Items["RequestID"] :?> string
+    //                 // printfn "%s is the RequestID" request
+    //                 // do! next.Invoke(context)
 
-                    let request = 
-                        match context.Items.TryGetValue("RequestID") with 
-                        | true, value -> 
-                            value :?> string
-                        | false, _ -> 
-                            ""
-                    printfn "%s is the RequestID" request
-                    do! next.Invoke(context)
-                }
-        )
-    ) |> ignore
+    //                 let request = 
+    //                     match context.Items.TryGetValue("RequestID") with 
+    //                     | true, value -> 
+    //                         value :?> string
+    //                     | false, _ -> 
+    //                         ""
+    //                 printfn "%s is the RequestID" request
+    //                 do! next.Invoke(context)
+    //             }
+    //     )
+    // ) |> ignore
+
+    // use of app.Map()
+    app.Map(
+        "/admin",
+        fun adminApp -> 
+            adminApp.Use(
+                // the adminApp middlware here
+            )
+    )
 
     app.MapGet(
         "/",
