@@ -1,60 +1,124 @@
 package main
 
 import (
-	"context"
+	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
-	"time"
 )
 
-// =============================================== DAY 26 ======================================================
+// =============================================== DAY 27 ======================================================
 
-func generateRequestId(ctx context.Context) string {
-	return fmt.Sprintf("%d", time.Now().UnixNano())
-}
+var (
+	ErrNotFound     = errors.New("resource not found")
+	ErrUnauthorized = errors.New("unauthorized")
+	ErrForbidden    = errors.New("forbidden")
+	ErrBadRequest   = errors.New("bad request")
+	ErrConflict     = errors.New("conflict")
+)
 
-type statusWriter struct {
-	http.ResponseWriter
-	status int
-}
+func statusFromError(err error) int {
+	switch {
+	case errors.Is(err, ErrBadRequest):
+		return http.StatusBadRequest
 
-func (w *statusWriter) WriteHeader(status int) {
-	w.status = status
-	w.ResponseWriter.WriteHeader(status)
-}
+	case errors.Is(err, ErrUnauthorized):
+		return http.StatusUnauthorized
 
-func (w *statusWriter) Write(data []byte) (int, error) {
-	if w.status == 0 {
-		w.status = http.StatusOK
+	case errors.Is(err, ErrForbidden):
+		return http.StatusForbidden
+
+	case errors.Is(err, ErrNotFound):
+		return http.StatusNotFound
+
+	case errors.Is(err, ErrConflict):
+		return http.StatusConflict
+
+	default:
+		return http.StatusInternalServerError
 	}
-	return w.ResponseWriter.Write(data)
 }
 
-func loggingMiddleware(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		start := time.Now()
-		sw := &statusWriter{
-			ResponseWriter: w,
-		}
+type ErrorResponse struct {
+	Error string `json:"error"`
+}
 
-		next.ServeHTTP(sw, r)
+// func writeError(w http.ResponseWriter, status int, message string) {
+// 	w.Header().Set("Content-Type", "application/json")
+// 	w.WriteHeader(status)
+// 	json.NewEncoder(w).Encode(map[string]any{
+// 		"error": message,
+// 	})
+// }
 
-		requestId := generateRequestId(r.Context())
+func writeError(w http.ResponseWriter, status int, message string) {
+	response := ErrorResponse{
+		Error: message,
+	}
 
-		fmt.Printf(
-			"request_id=%s method=%s path=%s status=%d duration=%s\n",
-			requestId,
-			r.Method,
-			r.URL.Path,
-			sw.status,
-			time.Since(start),
-		)
-	})
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+	json.NewEncoder(w).Encode(response)
 }
 
 func main() {
+	// err := ErrNotFound
+	// if errors.Is(err, ErrNotFound) {
+	// 	fmt.Println("The given error is ErrNotFound only")
+	// }
+
+	fmt.Println(statusFromError(ErrNotFound))
 
 }
+
+// =============================================== DAY 26 ======================================================
+
+// func generateRequestId(ctx context.Context) string {
+// 	return fmt.Sprintf("%d", time.Now().UnixNano())
+// }
+
+// type statusWriter struct {
+// 	http.ResponseWriter
+// 	status int
+// }
+
+// func (w *statusWriter) WriteHeader(status int) {
+// 	w.status = status
+// 	w.ResponseWriter.WriteHeader(status)
+// }
+
+// func (w *statusWriter) Write(data []byte) (int, error) {
+// 	if w.status == 0 {
+// 		w.status = http.StatusOK
+// 	}
+// 	return w.ResponseWriter.Write(data)
+// }
+
+// func loggingMiddleware(next http.Handler) http.Handler {
+// 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+// 		start := time.Now()
+// 		sw := &statusWriter{
+// 			ResponseWriter: w,
+// 		}
+
+// 		next.ServeHTTP(sw, r)
+
+// 		requestId := generateRequestId(r.Context())
+
+// 		fmt.Printf(
+// 			"request_id=%s method=%s path=%s status=%d duration=%s\n",
+// 			requestId,
+// 			r.Method,
+// 			r.URL.Path,
+// 			sw.status,
+// 			time.Since(start),
+// 		)
+// 	})
+// }
+
+// func main() {
+
+// }
 
 // func generateRequestId() string {
 // 	return fmt.Sprintf("%d", time.Now().UnixNano())
