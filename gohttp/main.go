@@ -1,81 +1,149 @@
 package main
 
 import (
-	"encoding/json"
-	"errors"
 	"fmt"
-	"net/http"
+	"log"
+	"os"
+	"strconv"
+
+	"github.com/joho/godotenv"
 )
 
 // =============================================== DAY 27 ======================================================
 
-var (
-	ErrNotFound     = errors.New("resource not found")
-	ErrUnauthorized = errors.New("unauthorized")
-	ErrForbidden    = errors.New("forbidden")
-	ErrBadRequest   = errors.New("bad request")
-	ErrConflict     = errors.New("conflict")
-)
+type Config struct {
+	Port        int
+	DatabaseURL string
+	JWTSecret   string
+}
 
-func statusFromError(err error) int {
-	switch {
-	case errors.Is(err, ErrBadRequest):
-		return http.StatusBadRequest
-
-	case errors.Is(err, ErrUnauthorized):
-		return http.StatusUnauthorized
-
-	case errors.Is(err, ErrForbidden):
-		return http.StatusForbidden
-
-	case errors.Is(err, ErrNotFound):
-		return http.StatusNotFound
-
-	case errors.Is(err, ErrConflict):
-		return http.StatusConflict
-
-	default:
-		return http.StatusInternalServerError
+func requiredEnv(key string) string {
+	value, exist := os.LookupEnv(key)
+	if !exist || value == "" {
+		log.Fatalf("Missing req env %s", key)
 	}
+	return value
 }
 
-type ErrorResponse struct {
-	Error string `json:"error"`
-}
-
-// func writeError(w http.ResponseWriter, status int, message string) {
-// 	w.Header().Set("Content-Type", "application/json")
-// 	w.WriteHeader(status)
-// 	json.NewEncoder(w).Encode(map[string]any{
-// 		"error": message,
-// 	})
-// }
-
-func writeError(w http.ResponseWriter, status int, message string) {
-	response := ErrorResponse{
-		Error: message,
+func requiredEnvInt(key string) int {
+	value, exist := os.LookupEnv(key)
+	if !exist || value == "" {
+		log.Fatalf("Missing req env %s", key)
 	}
-
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(status)
-	json.NewEncoder(w).Encode(response)
+	i, err := strconv.Atoi(value)
+	if err != nil {
+		log.Fatalf("Invalide port")
+	}
+	return i
 }
 
-func handleError(w http.ResponseWriter, err error) {
-	status := statusFromError(ErrNotFound)
-	message := err.Error()
-	writeError(w, status, message)
+func loadConfig() Config {
+	return Config{
+		Port:        requiredEnvInt("PORT"),
+		DatabaseURL: requiredEnv("DATABASEURL"),
+		JWTSecret:   requiredEnv("JWTSECRET"),
+	}
 }
 
 func main() {
-	// err := ErrNotFound
-	// if errors.Is(err, ErrNotFound) {
-	// 	fmt.Println("The given error is ErrNotFound only")
+	// fmt.Println("The Weeknd is the GOAT")
+	// name, got := os.LookupEnv("SANAME")
+	// if !got {
+	// 	fmt.Println("There is not valeue SANAME provided as environment variable")
+	// 	return
 	// }
+	// fmt.Println(name)
 
-	fmt.Println(statusFromError(ErrNotFound))
+	// cfg := loadConfig()
 
+	// go gets all the env in strings but not in the form of ther int or other data types
+
+	// fmt.Println(cfg.Port)
+	// fmt.Println(cfg.JWTSecret != "")
+
+	// name := flag.Int("port", 6767, "server port")
+	// flag.Parse()
+	// fmt.Println(*name)
+
+	err := godotenv.Load()
+
+	if err != nil {
+		log.Fatal("There is no fucking .env file attached")
+	}
+
+	name := os.Getenv("SANAME")
+	fmt.Println(name)
 }
+
+// =============================================== DAY 27 ======================================================
+
+// var (
+// 	ErrNotFound     = errors.New("resource not found")
+// 	ErrUnauthorized = errors.New("unauthorized")
+// 	ErrForbidden    = errors.New("forbidden")
+// 	ErrBadRequest   = errors.New("bad request")
+// 	ErrConflict     = errors.New("conflict")
+// )
+
+// func statusFromError(err error) int {
+// 	switch {
+// 	case errors.Is(err, ErrBadRequest):
+// 		return http.StatusBadRequest
+
+// 	case errors.Is(err, ErrUnauthorized):
+// 		return http.StatusUnauthorized
+
+// 	case errors.Is(err, ErrForbidden):
+// 		return http.StatusForbidden
+
+// 	case errors.Is(err, ErrNotFound):
+// 		return http.StatusNotFound
+
+// 	case errors.Is(err, ErrConflict):
+// 		return http.StatusConflict
+
+// 	default:
+// 		return http.StatusInternalServerError
+// 	}
+// }
+
+// type ErrorResponse struct {
+// 	Error string `json:"error"`
+// }
+
+// // func writeError(w http.ResponseWriter, status int, message string) {
+// // 	w.Header().Set("Content-Type", "application/json")
+// // 	w.WriteHeader(status)
+// // 	json.NewEncoder(w).Encode(map[string]any{
+// // 		"error": message,
+// // 	})
+// // }
+
+// func writeError(w http.ResponseWriter, status int, message string) {
+// 	response := ErrorResponse{
+// 		Error: message,
+// 	}
+
+// 	w.Header().Set("Content-Type", "application/json")
+// 	w.WriteHeader(status)
+// 	json.NewEncoder(w).Encode(response)
+// }
+
+// func handleError(w http.ResponseWriter, err error) {
+// 	status := statusFromError(ErrNotFound)
+// 	message := err.Error()
+// 	writeError(w, status, message)
+// }
+
+// func main() {
+// 	// err := ErrNotFound
+// 	// if errors.Is(err, ErrNotFound) {
+// 	// 	fmt.Println("The given error is ErrNotFound only")
+// 	// }
+
+// 	fmt.Println(statusFromError(ErrNotFound))
+
+// }
 
 // =============================================== DAY 26 ======================================================
 
