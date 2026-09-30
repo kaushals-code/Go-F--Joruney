@@ -61,6 +61,12 @@ func writeError(w http.ResponseWriter, status int, message string) {
 	json.NewEncoder(w).Encode(response)
 }
 
+func handleError(w http.ResponseWriter, err error) {
+	status := statusFromError(ErrNotFound)
+	message := err.Error()
+	writeError(w, status, message)
+}
+
 func main() {
 	// err := ErrNotFound
 	// if errors.Is(err, ErrNotFound) {
