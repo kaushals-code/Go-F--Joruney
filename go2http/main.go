@@ -2,60 +2,69 @@ package main
 
 import (
 	"fmt"
-	"log/slog"
 	"net/http"
-	"os"
-
-	"github.com/go-chi/chi"
 )
 
-type UserService struct {
-	logger *slog.Logger
-}
-
-func (u *UserService) HandleLogging(msg string) {
-	slog.Info(msg)
-}
-
-func loggingMiddleware(logger UserService, next http.Handler) http.Handler {
-	return http.HandlerFunc((func(w http.ResponseWriter, r *http.Request) {
-		// slog.Info("Middleware started serving")
-		logger.HandleLogging("Middleware started serving")
-		next.ServeHTTP(w, r)
-		// slog.Info("Middleware ended serving")
-		logger.HandleLogging("Middleware ended serving")
-	}))
-}
-
-func actualFunc(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "The Weeknd is the GOAT BRO")
-}
-
 func main() {
+	fmt.Println("The Weeknd is the GOAT")
 
-	// initializing the logger
-	opts := &slog.HandlerOptions{
-		Level: slog.LevelInfo,
-	}
-	logger := slog.New(slog.NewJSONHandler(os.Stdout, opts))
+	res, err := http.Get("http://github.com/kaushals-code")
 
-	userService := UserService{
-		logger: logger,
+	if err != nil {
+		fmt.Println(err)
+		return
 	}
 
-	r := chi.NewRouter()
-
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println(w, "Hello World")
-	})
-
-	r.HandleFunc("/hello", actualFunc)
-
-	handler := loggingMiddleware(userService, r)
-
-	fmt.Println("Server running on port 8080")
-	http.ListenAndServe(":8080", handler)
+	fmt.Println(res.Status)
 }
+
+// type UserService struct {
+// 	logger *slog.Logger
+// }
+
+// func (u *UserService) HandleLogging(msg string) {
+// 	slog.Info(msg)
+// }
+
+// func loggingMiddleware(logger UserService, next http.Handler) http.Handler {
+// 	return http.HandlerFunc((func(w http.ResponseWriter, r *http.Request) {
+// 		// slog.Info("Middleware started serving")
+// 		logger.HandleLogging("Middleware started serving")
+// 		next.ServeHTTP(w, r)
+// 		// slog.Info("Middleware ended serving")
+// 		logger.HandleLogging("Middleware ended serving")
+// 	}))
+// }
+
+// func actualFunc(w http.ResponseWriter, r *http.Request) {
+// 	fmt.Fprintln(w, "The Weeknd is the GOAT BRO")
+// }
+
+// func main() {
+
+// 	// initializing the logger
+// 	opts := &slog.HandlerOptions{
+// 		Level: slog.LevelInfo,
+// 	}
+// 	logger := slog.New(slog.NewJSONHandler(os.Stdout, opts))
+
+// 	userService := UserService{
+// 		logger: logger,
+// 	}
+
+// 	r := chi.NewRouter()
+
+// 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+// 		fmt.Println(w, "Hello World")
+// 	})
+
+// 	r.HandleFunc("/hello", actualFunc)
+
+// 	handler := loggingMiddleware(userService, r)
+
+// 	fmt.Println("Server running on port 8080")
+// 	http.ListenAndServe(":8080", handler)
+// }
 
 // type UserService struct {
 // 	logger *slog.Logger
