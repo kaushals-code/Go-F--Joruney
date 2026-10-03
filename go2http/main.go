@@ -1,22 +1,154 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
+	"time"
 )
 
-func main() {
-	fmt.Println("The Weeknd is the GOAT")
+type GitHubUser struct {
+	Login     string `json:"login"`
+	Name      string `json:"name"`
+	Followers int    `json:"followers"`
+	Repos     int    `json:"public_repos"`
+}
 
-	res, err := http.Get("http://github.com/kaushals-code")
+func main() {
+	url := "http://api.github.com/users/kaushals-code"
+
+	// fmt.Println("The Weeknd is the GOAT")
+
+	// client := &http.Client{
+	// 	Timeout: 5 * time.Second,
+	// }
+
+	// res, err := client.Get(url)
+
+	// if err != nil {
+	// 	fmt.Println(err)
+	// 	return
+	// }
+	// defer res.Body.Close()
+
+	// var user GitHubUser
+	// er := json.NewDecoder(res.Body).Decode(&user)
+
+	// if er != nil {
+	// 	fmt.Errorf("There is some error occuring, please try again later")
+	// 	return
+	// }
+
+	// fmt.Println("Login:", user.Login)
+	// fmt.Println("Name:", user.Name)
+	// fmt.Println("Followers:", user.Followers)
+	// fmt.Println("Repositories:", user.Repos)
+
+	// till here, it is working good and the response is perfectly getting decoded
+
+	// this timeout can also be done at the request level also
+
+	// client := &http.Client{
+	// 	Timeout: 3 * time.Second,
+	// }
+
+	// ctx, cancel := context.WithTimeout(
+	// 	context.Background(),
+	// 	3*time.Second,
+	// )
+	// defer cancel()
+
+	// url := "http://api.github.com/users/kaushals-code"
+
+	// req, err := http.NewRequestWithContext(
+	// 	ctx,
+	// 	http.MethodGet,
+	// 	url,
+	// 	nil,
+	// )
+
+	// if err != nil {
+	// 	fmt.Println("Error creating request:", err)
+	// 	return
+	// }
+
+	// req.Header.Set("Content-type", "application/json")
+
+	// resp, err := client.Do(req)
+
+	// if err != nil {
+	// 	fmt.Println("Error creating request:", err)
+	// 	return
+	// }
+
+	// defer resp.Body.Close()
+
+	// var user GitHubUser
+	// er := json.NewDecoder(resp.Body).Decode(&user)
+
+	// if er != nil {
+	// 	fmt.Errorf("There is some error occuring, please try again later")
+	// 	return
+	// }
+
+	// fmt.Println("Login:", user.Login)
+	// fmt.Println("Name:", user.Name)
+	// fmt.Println("Followers:", user.Followers)
+	// fmt.Println("Repositories:", user.Repos)
+
+	// u, err := url.Parse(url)
+
+	// if err != nil {
+	// 	fmt.Println("There is an error")
+	// 	return
+	// }
+
+	// query := u.Query()
+	// u.Set("city", "Hyderabad")
+
+	// u.RawQuery = query.Encode()
+
+	// use of http.Transport in a previous example
+
+	transport := &http.Transport{
+		MaxIdleConns:        100,
+		MaxIdleConnsPerHost: 10,
+		IdleConnTimeout:     90 * time.Second,
+	}
+
+	client := &http.Client{
+		Transport: transport,
+		Timeout:   5 * time.Second,
+	}
+
+	res, err := client.Get(url)
 
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+	defer res.Body.Close()
 
-	fmt.Println(res.Status)
+	var user GitHubUser
+	er := json.NewDecoder(res.Body).Decode(&user)
+
+	if er != nil {
+		fmt.Errorf("There is some error occuring, please try again later")
+		return
+	}
+
+	fmt.Println("Login:", user.Login)
+	fmt.Println("Name:", user.Name)
+	fmt.Println("Followers:", user.Followers)
+	fmt.Println("Repositories:", user.Repos)
+
+	// its better to retry an api service not at the fixed interval times but in the exponential increasing wating
+	// times like after the first failure 100ms, and then 200ms and then 300ms.... so on
+
+	
 }
+
+// ======================================== DAY 30 ==================================================
 
 // type UserService struct {
 // 	logger *slog.Logger
