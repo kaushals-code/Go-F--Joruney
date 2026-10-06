@@ -3,12 +3,20 @@ open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.Hosting
 open System.Text.Json
+// open Microsoft.FSharp.Core.Result
+open System.Net.Http
 
 type User = 
     {
         Name: string
         age: int
-        email: string opiton
+        email: string
+    }
+
+type Person = 
+    {
+        Id: int
+        Name: string
     }
 
 [<EntryPoint>]
@@ -38,22 +46,50 @@ let main args =
     //     )
     // ) |> ignore
 
-    let user =
+    let user: User =
         {
             Name= "theweeknd"
             age= 36
-            // email= "theweeknd@gmail.com"
+            email= "theweeknd@gmail.com"
+        }
+    
+    let fuser: User =
+        {
+            Name= "theweeknd"
+            age= 36
+            email= "theweeknd@gmail.com"
         }
 
     app.MapGet(
         "/todo", Func<IResult>(
         fun () ->
             // Results.NotFound("/users/id created")
-            Results.Ok(
-                user
-            )
+            Results.Ok([|user;fuser|])
     ))
     |> ignore
+
+    // app.MapGet(
+    //     "/finduser",
+    //     Func<Result<Person, string>>(fun () -> 
+    //         Ok {
+    //             Id= 1;
+    //             Name= "kaushal"
+    //         }
+    //     )
+    // ) |> ignore
+
+    let client = new HttpClient()
+
+    let func = 
+        async {
+            let! response = 
+                client.GetAsync("https://api.github.com/users/kaushals-code")
+                |> Async.AwaitTask
+            return response
+        }
+    
+    let res = Async.RunSynchronously func
+    printfn "Status: %O" res.StatusCode
 
     app.Run()
 
