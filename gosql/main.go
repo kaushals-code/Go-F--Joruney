@@ -1,9 +1,73 @@
 package main
 
-import "fmt"
+import (
+	"context"
+	"fmt"
+	"log"
+	"os"
+	"time"
+
+	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/joho/godotenv"
+)
 
 func main() {
-	fmt.Println("Hello world")
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Cannot locate the .env file")
+		return
+	}
+
+	dbstring := os.Getenv("PSQL_STRING")
+	if dbstring == "" {
+		log.Fatal("Cannot locate the Database url string")
+		return
+	}
+
+	ctx, cancel := context.WithTimeout(
+		context.Background(),
+		5*time.Minute,
+	)
+	defer cancel()
+
+	config, err := pgxpool.ParseConfig(dbstring)
+	if err != nil {
+		log.Fatal("Cannot pool actually")
+		return
+	}
+
+	config.MinConns = 5
+	config.MaxConns = 30
+
+	pool, err := pgxpool.NewWithConfig(ctx, config)
+	if err != nil {
+		log.Fatal("There is some error with the DB")
+		return
+	}
+	defer pool.Close()
+
+	err = pool.Ping(ctx)
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+
+	var id int
+	var name string
+	var email string
+
+	err = pool.QueryRow(
+		context.Background(),
+		`select id, name, email
+		from users
+		where id = $1`,
+		3,
+	).Scan(&id, &name, &email)
+
+	fmt.Println(id)
+	fmt.Println(name)
+	fmt.Println(email)
+
 }
 
 // import (
