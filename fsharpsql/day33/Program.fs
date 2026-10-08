@@ -3,6 +3,15 @@ open Microsoft.AspNetCore.Builder
 open Microsoft.Extensions.Hosting
 open Npgsql
 
+let checkDatabase(dataSrouce : NpgsqlDataSource) = 
+    task {
+        use command = dataSource.CreateCommand("SELECT 1")
+
+        let! result = command.ExecuteScalarAsync()
+
+        return result
+    }
+
 [<EntryPoint>]
 let main args =
     let builder = WebApplication.CreateBuilder(args)
@@ -10,7 +19,8 @@ let main args =
 
     app.MapGet("/", Func<string>(fun () -> "Hello World!")) |> ignore
 
-    let connection = new NpgsqlConnection(builder.Configuration.["DB_STRING"])
+    let connection = new NpgsqlConnection(builder.Configuration.["ConnectionString:DB_STRING"])
+    printfn "The string is : %A" connection
 
     app.MapGet(
         "/dbcheck",
@@ -23,4 +33,3 @@ let main args =
     app.Run()
 
     0 // Exit code
-
